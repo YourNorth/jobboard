@@ -2,6 +2,7 @@ package com.bulat.jobboard.controller;
 
 import com.bulat.jobboard.dto.CaptchaResponseDto;
 import com.bulat.jobboard.model.User;
+import com.bulat.jobboard.service.EmailService;
 import com.bulat.jobboard.service.UserService;
 import com.bulat.jobboard.utils.Attributes;
 import com.bulat.jobboard.utils.UserValidator;
@@ -27,15 +28,17 @@ public class SignUpController {
     private final UserValidator userValidator;
     private final RestTemplate restTemplate;
     private final UserService userService;
+    private final EmailService emailService;
 
     @Value("${recaptcha.secret}")
     private String secret;
 
     @Autowired
-    public SignUpController(UserValidator userValidator, RestTemplate restTemplate, UserService userService) {
+    public SignUpController(UserValidator userValidator, RestTemplate restTemplate, UserService userService, EmailService emailService) {
         this.userValidator = userValidator;
         this.restTemplate = restTemplate;
         this.userService = userService;
+        this.emailService = emailService;
     }
 
     @GetMapping
@@ -49,8 +52,9 @@ public class SignUpController {
         userValidator.validate(user, result);
         StringBuilder error = errorChecking(captchaResponse, result);
         if (error.length() == 0){
-            Attributes.addSuccessAttributes(model, "Success!");
+            Attributes.addSuccessAttributes(model, "A confirmation letter will come to your mail soon!");
             userService.signUp(user);
+            emailService.sendConfirmation(user);
         }else{
             Attributes.addErrorAttributes(model, String.valueOf(error));
         }

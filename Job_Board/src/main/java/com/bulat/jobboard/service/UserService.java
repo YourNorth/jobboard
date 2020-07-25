@@ -9,7 +9,11 @@ import java.util.Optional;
 public interface UserService {
     Optional<User> findByEmail(String email);
 
+    Optional<User> findByToken(String token);
+
     void signUp(User user);
 
     User save(User user);
+
+    boolean confirm(String token);
 }

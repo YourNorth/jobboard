@@ -2,18 +2,22 @@ package com.bulat.jobboard.security.details;
 
 import com.bulat.jobboard.model.State;
 import com.bulat.jobboard.model.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
-    @Getter
     private User user;
+
+    public UserDetailsImpl(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

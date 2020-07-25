@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+@Service(value = "customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserService userService;
@@ -22,12 +22,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<User> userOptional = userService.findByEmail(s);
-        if (userOptional.isPresent()){
-            User user = userOptional.get();
-            return new UserDetailsImpl(user);
-        }
-        throw new UsernameNotFoundException("User not found");
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<User> userOptional = userService.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User userSimple = userOptional.get();
+            return new UserDetailsImpl(userSimple);
+        } throw new UsernameNotFoundException("User not found");
     }
+
 }

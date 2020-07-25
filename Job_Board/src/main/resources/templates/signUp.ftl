@@ -14,13 +14,12 @@
     <script type="text/javascript">
         function funOnLoad() {
             <#if title?? && message?? && category?? >
-                swal('${title}', '${message}', '${category}');
+            swal('${title}', '${message}', '${category}');
             </#if>
         }
         window.onload = funOnLoad;
     </script>
 </head>
-
 <body>
 <div class="login-dark">
     <form method="post" autocomplete="off" id="form">
@@ -44,10 +43,9 @@
             <button class="btn btn-primary btn-block" type="submit" onclick="return validateForm()">Sign up <br>
             </button>
         </div>
-        <a href="${rc.getContextPath()}/signIn" class="forgot">Are you already registered? Login
+        <a href="/signIn" class="forgot">Are you already registered? Login
             here</a></form>
 </div>
-
 <script>
     function validateForm() {
         let nickname = document.getElementById('nickname');
@@ -80,5 +78,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
