@@ -7,6 +7,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.util.Date;
 
+@MappedSuperclass
 @Data
 public class BaseEntity {
 
