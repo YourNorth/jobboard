@@ -31,8 +31,9 @@ public class Candidate extends BaseEntity{
     @Column(name = "description", length = 3000)
     private String description;
 
-    @Column(name = "country")
-    private String country;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="country_id")
+    private Country country;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="city_id")

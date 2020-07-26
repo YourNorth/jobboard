@@ -69,7 +69,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="country" type="VARCHAR(255)">
+            <column name="country_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
 
