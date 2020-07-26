@@ -25,9 +25,6 @@ public class Candidate extends BaseEntity{
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "description", length = 3000)
     private String description;
 
@@ -40,6 +37,7 @@ public class Candidate extends BaseEntity{
     private City city;
 
     @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @ManyToOne(fetch = FetchType.EAGER)
