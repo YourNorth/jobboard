@@ -85,7 +85,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="native_language" type="VARCHAR(255)">
+            <column name="language_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
 

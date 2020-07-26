@@ -38,7 +38,7 @@ public class Candidate extends BaseEntity{
     private String city;
 
     @Column(name = "gender")
-    private String gender;
+    private Gender gender;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="skill_id")
@@ -47,8 +47,9 @@ public class Candidate extends BaseEntity{
     @Column(name = "education")
     private String education;
 
-    @Column(name = "native_language")
-    private String native_language;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="language_id")
+    private Language native_language;
 
     @Column(name = "link_img")
     private String link_img;
