@@ -34,7 +34,7 @@
             </column>
 
             <column name="token" type="VARCHAR(500)">
-                <constraints nullable="true"/>
+                <constraints nullable="true" unique="true"/>
             </column>
         </createTable>
 

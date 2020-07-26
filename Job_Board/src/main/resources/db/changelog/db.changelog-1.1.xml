@@ -22,7 +22,7 @@
             </column>
 
             <column name="name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
     </changeSet>
@@ -58,7 +58,7 @@
             </column>
 
             <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
 
             <column name="password" type="VARCHAR(255)">
