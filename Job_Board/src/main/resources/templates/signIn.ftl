@@ -14,15 +14,16 @@
     <script type="text/javascript">
         function funOnLoad() {
             <#if title?? && message?? && category?? >
-            swal('${title}', '${message}', '${category}');
+                swal('${title}', '${message}', '${category}');
             </#if>
-            <#--            <#if SPRING_SECURITY_LAST_EXCEPTION??>-->
-            <#--                swal('Error', ${SPRING_SECURITY_LAST_EXCEPTION.message}, 'error');-->
-            <#--            </#if>-->
+<#--            <#if SPRING_SECURITY_LAST_EXCEPTION??>-->
+<#--                swal('Error', ${SPRING_SECURITY_LAST_EXCEPTION.message}, 'error');-->
+<#--            </#if>-->
         }
         window.onload = funOnLoad;
     </script>
 </head>
+
 <body>
 <div class="login-dark">
     <form method="post" autocomplete="off" id="form">
@@ -84,7 +85,10 @@
         });
     }
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
