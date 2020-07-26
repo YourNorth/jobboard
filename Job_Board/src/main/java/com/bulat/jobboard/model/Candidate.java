@@ -44,8 +44,9 @@ public class Candidate extends BaseEntity{
     @JoinColumn(name="skill_id")
     private Skill skill;
 
-    @Column(name = "education")
-    private String education;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="education_id")
+    private Education education;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="language_id")

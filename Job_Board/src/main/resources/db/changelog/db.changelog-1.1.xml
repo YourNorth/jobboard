@@ -81,7 +81,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="education" type="VARCHAR(255)">
+            <column name="education_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
 
