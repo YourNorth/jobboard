@@ -96,7 +96,11 @@
 
     <changeSet id="1.0.5" author="bulat.bilalov">
         <insert tableName="roles">
-            <column name="name" value="ROLE_USER"/>
+            <column name="name" value="ROLE_CANDIDATE"/>
+        </insert>
+
+        <insert tableName="roles">
+            <column name="name" value="ROLE_EMPLOYER"/>
         </insert>
 
         <insert tableName="roles">

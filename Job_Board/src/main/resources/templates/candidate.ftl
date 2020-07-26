@@ -107,7 +107,7 @@
     <!--/ bradcam_area  -->
 
     <!-- catagory_area -->
-    <form action="/candidate" method="post">
+    <form action="/candidates" method="post">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
@@ -117,7 +117,7 @@
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" autocomplete="off" id="lastName" name="lastName" placeholder="Last name">
+                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
                     </div>
                     <p></p>
                     <div class="single_input">
@@ -126,11 +126,11 @@
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
+                        <input type="text" autocomplete="off" id="lastName" name="lastName" placeholder="Last name">
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" autocomplete="off" id="general_skill" name="general_skill" placeholder="General skill">
+                        <input type="text" autocomplete="off" id="skill" name="skill" placeholder="Skill">
                     </div>
                     <p></p>
                     <div class="single_input">
@@ -138,11 +138,12 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
+                    <div class="input-group">
                         <select id="gender" name="gender" class="wide" >
                             <option data-display="Gender">Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <#list genders as gender>
+                                <option value="${gender}">${gender}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
@@ -151,7 +152,7 @@
                         <button  class="boxed-btn3 w-100" type="submit">Find candidate</button>
                     </div>
                     <p></p>
-                    <form action="/candidate" method="get">
+                    <form action="/candidates" method="get">
                     <div class="job_btn">
                         <button  class="boxed-btn3 w-100" type="submit">Show all</button>
                     </div>
@@ -188,7 +189,7 @@
                             <img src="${user.link_img}" alt="">
                         </div>
                         <a href="/candidate/${user.id}"><h4>${user.firstName} ${user.lastName}</h4></a>
-                        <p>${user.general_skill}</p>
+                        <p>${user.skill.name}</p>
                     </div>
                 </div>
                 <#else>
