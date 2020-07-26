@@ -96,4 +96,6 @@ values (now(), 'ACTIVE', now(), 'Hindi'),
        (now(), 'ACTIVE', now(), 'Swedish'),
        (now(), 'ACTIVE', now(), 'Finnish'),
        (now(), 'ACTIVE', now(), 'Moldovan'),
-       (now(), 'ACTIVE', now(), 'Portuguese');
+       (now(), 'ACTIVE', now(), 'Portuguese'),
+       (now(), 'ACTIVE', now(), 'Russian'),
+       (now(), 'ACTIVE', now(), 'Tatar');
