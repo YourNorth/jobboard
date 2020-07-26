@@ -71,4 +71,38 @@
                                  referencedTableName="educations"/>
     </changeSet>
 
+    <changeSet id="1.1.3" author="bulat.bilalov">
+        <createTable tableName="cities">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.1.4" author="bulat.bilalov">
+        <addForeignKeyConstraint baseColumnNames="city_id"
+                                 baseTableName="candidates"
+                                 constraintName="fk_candidates_city_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+    </changeSet>
+
 </databaseChangeLog>
