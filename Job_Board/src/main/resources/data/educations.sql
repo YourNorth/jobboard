@@ -62,7 +62,6 @@ insert into educations (created, status, updated, name) values ('now()', 'ACTIVE
 insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Universidade de Caxias do Sul');
 insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Technical University of Rzeszow');
 insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Pontifícia Universidade Católica de Minas Gerais');
-insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Institute of Teachers Education, Rajang');
 insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'St. Clair College');
 insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Istanbul University');
 insert into educations (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Norwegian University of Life Sciences');
