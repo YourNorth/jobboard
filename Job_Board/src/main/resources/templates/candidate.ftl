@@ -116,12 +116,22 @@
                         <input type="text" autocomplete="off" id="firstName" name="firstName" placeholder="First name">
                     </div>
                     <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
+                    <div class="input-group">
+                        <select id="city" name="city" class="wide" >
+                            <option data-display="City">City</option>
+                            <#list cities as city>
+                                <option value="${city.name}">${city.name}</option>
+                            </#list>
+                        </select>
                     </div>
                     <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="country" name="country" placeholder="Country">
+                    <div class="input-group">
+                        <select id="country" name="country" class="wide" >
+                            <option data-display="Country">Country</option>
+                            <#list country as country>
+                                <option value="${country.name}">${country.name}</option>
+                            </#list>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -129,12 +139,22 @@
                         <input type="text" autocomplete="off" id="lastName" name="lastName" placeholder="Last name">
                     </div>
                     <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="skill" name="skill" placeholder="Skill">
+                    <div class="input-group">
+                        <select id="skill" name="skill" class="wide" >
+                            <option data-display="Skill">Skill</option>
+                            <#list skills as skill>
+                                <option value="${skill.name}">${skill.name}</option>
+                            </#list>
+                        </select>
                     </div>
                     <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="native_language" name="native_language" placeholder="Native language">
+                    <div class="input-group">
+                        <select id="native_language" name="native_language" class="wide" >
+                            <option data-display="Language">Language</option>
+                            <#list languages as language>
+                                <option value="${language.name}">${language.name}</option>
+                            </#list>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -143,6 +163,15 @@
                             <option data-display="Gender">Gender</option>
                             <#list genders as gender>
                                 <option value="${gender}">${gender}</option>
+                            </#list>
+                        </select>
+                    </div>
+                    <p></p>
+                    <div class="input-group">
+                        <select id="education" name="education" class="wide" >
+                            <option data-display="Education">Education</option>
+                            <#list educations as education>
+                                <option value="${education.name}">${education.name}</option>
                             </#list>
                         </select>
                     </div>
