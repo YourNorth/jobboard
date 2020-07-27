@@ -8,9 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -107,7 +106,7 @@
     <!--/ bradcam_area  -->
 
     <!-- catagory_area -->
-    <form action="/candidates" method="post">
+    <form action="/candidates" method="post" id="form2">
     <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
@@ -178,7 +177,7 @@
                 </div>
                 <div class="col-lg-3 col-md-12">
                     <div class="reset_btn">
-                        <button  class="boxed-btn3 w-100" type="submit">Find candidate</button>
+                        <button  class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Find candidate</button>
                     </div>
                     <p></p>
                     <form action="/candidates" method="get">
@@ -206,6 +205,24 @@
     </div>
     </form>
     <!--/ catagory_area -->
+
+    <script>
+        function validateForm() {
+            let gender = document.getElementById('gender');
+            let error = '';
+            if (gender.value !== "MALE" && gender.value !== "FEMALE"){
+                error += 'Gender field cannot be empty! \n';
+            }
+            if (error !== '') {
+                swal("Oops", error, "error");
+                return false;
+            } else {
+                swal("Good job!", 'Ok', "success");
+                let form = document.getElementById("form2");
+                form.submit();
+            }
+        }
+    </script>
 
     <!-- featured_candidates_area_start  -->
     <div class="featured_candidates_area candidate_page_padding">
