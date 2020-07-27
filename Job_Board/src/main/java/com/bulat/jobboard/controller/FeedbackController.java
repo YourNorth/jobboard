@@ -36,6 +36,7 @@ public class FeedbackController {
     }
 
     @PostMapping
+    //FIXME: LAZY
     public String sendFeedback(Feedback f, Authentication authentication){
         User u = ((UserDetailsImpl) authentication.getPrincipal()).getUser();
         Optional<User> userOptional = userService.findByEmail(u.getEmail());

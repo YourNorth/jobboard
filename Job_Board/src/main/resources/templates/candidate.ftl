@@ -228,14 +228,14 @@
     <div class="featured_candidates_area candidate_page_padding">
         <div class="container">
             <div class="row">
-                <#list users as user>
+                <#list candidates as candidate>
                 <div class="col-md-6 col-lg-3">
                     <div class="single_candidates text-center">
                         <div class="thumb">
-                            <img src="${user.link_img}" alt="">
+                            <img src="${candidate.link_img}" alt="">
                         </div>
-                        <a href="/candidate/${user.id}"><h4>${user.firstName} ${user.lastName}</h4></a>
-                        <p>${user.skill.name}</p>
+                        <a href="/candidate/${candidate.id}"><h4>${candidate.firstName} ${candidate.lastName}</h4></a>
+                        <p>${candidate.skill.name}</p>
                     </div>
                 </div>
                 <#else>
