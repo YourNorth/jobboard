@@ -23,6 +23,6 @@ public class Attributes {
     public static void addAttributes(BaseEntity baseEntity){
         baseEntity.setStatus(State.ACTIVE);
         baseEntity.setCreated(new Date());
-        baseEntity.setCreated(new Date());
+        baseEntity.setUpdated(new Date());
     }
 }

@@ -11,6 +11,11 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "roles")
+
+/**
+ * @see This model is created in classpath:/db/changelog/db.changelog-1.0.xml
+ */
+
 public class Role extends BaseEntity implements GrantedAuthority {
 
     @Column(name = "name")

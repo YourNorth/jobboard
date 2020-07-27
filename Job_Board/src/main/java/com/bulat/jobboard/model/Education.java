@@ -13,6 +13,11 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "educations")
+
+/**
+ * @see This model is created in classpath:/db/changelog/db.changelog-1.2.xml
+ */
+
 public class Education extends BaseEntity{
 
     @Column(name = "name")

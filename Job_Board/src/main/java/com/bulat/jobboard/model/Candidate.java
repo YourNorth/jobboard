@@ -11,6 +11,11 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "candidates")
+
+/**
+ * @see This model is created in classpath:/db/changelog/db.changelog-1.1.xml
+ */
+
 public class Candidate extends BaseEntity{
 
     @Column(name = "firstName")

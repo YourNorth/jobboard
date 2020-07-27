@@ -12,6 +12,11 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "users")
+
+/**
+ * @see This model is created in classpath:/db/changelog/db.changelog-1.0.xml
+ */
+
 public class User extends BaseEntity{
 
     @Column(name = "nickname")

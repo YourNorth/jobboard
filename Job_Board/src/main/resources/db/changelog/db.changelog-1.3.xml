@@ -56,7 +56,7 @@
             </column>
 
             <column name="name" type="VARCHAR(255)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="message" type="VARCHAR(255)">
