@@ -9,7 +9,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @Data
-class BaseEntity {
+public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

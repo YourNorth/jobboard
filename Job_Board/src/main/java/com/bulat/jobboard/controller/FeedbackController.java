@@ -5,6 +5,7 @@ import com.bulat.jobboard.model.User;
 import com.bulat.jobboard.security.details.UserDetailsImpl;
 import com.bulat.jobboard.service.FeedbackService;
 import com.bulat.jobboard.service.UserService;
+import com.bulat.jobboard.utils.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,7 @@ public class FeedbackController {
         Optional<User> userOptional = userService.findByEmail(u.getEmail());
         if (userOptional.isPresent()){
             User user = userOptional.get();
+            Attributes.addAttributes(f);
             Feedback feedback = feedbackService.save(f);
             if (user.getFeedbacks().isEmpty()){
                 user.setFeedbacks(Collections.singletonList(feedback));
