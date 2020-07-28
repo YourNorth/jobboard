@@ -4,7 +4,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="1.2.3" author="bulat.bilalov">
-        <createTable tableName="feedbackForCompanies">
+        <createTable tableName="feedback_for_companies">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -49,7 +49,7 @@
             <column name="candidate_id" type="BIGINT">
             </column>
 
-            <column name="feedbackForCandidates_id" type="BIGINT">
+            <column name="feedback_for_candidate_id" type="BIGINT">
             </column>
         </createTable>
     </changeSet>
@@ -59,7 +59,7 @@
             <column name="company_id" type="BIGINT">
             </column>
 
-            <column name="feedbackForCompanies_id" type="BIGINT">
+            <column name="feedback_for_company_id" type="BIGINT">
             </column>
         </createTable>
     </changeSet>
@@ -71,7 +71,7 @@
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
-                                 referencedTableName="feedbackForCandidates"/>
+                                 referencedTableName="feedback_for_candidates"/>
     </changeSet>
 
     <changeSet id="1.2.7" author="bulat.bilalov">
@@ -81,6 +81,6 @@
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
-                                 referencedTableName="feedbackForCompanies"/>
+                                 referencedTableName="feedback_for_companies"/>
     </changeSet>
 </databaseChangeLog>

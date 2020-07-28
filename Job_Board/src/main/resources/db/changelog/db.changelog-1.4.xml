@@ -64,7 +64,7 @@
     </changeSet>
 
     <changeSet id="1.2.2" author="bulat.bilalov">
-        <createTable tableName="feedbackForCandidates">
+        <createTable tableName="feedback_for_candidates">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
