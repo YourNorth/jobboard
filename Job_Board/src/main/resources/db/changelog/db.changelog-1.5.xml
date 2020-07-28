@@ -1,0 +1,86 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.2.3" author="bulat.bilalov">
+        <createTable tableName="feedbackForCompanies">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="candidate_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contact" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="company_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cover_letter" type="VARCHAR(5000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.2.4" author="bulat.bilalov">
+        <createTable tableName="candidate_company">
+            <column name="candidate_id" type="BIGINT">
+            </column>
+
+            <column name="feedbackForCandidates_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.2.5" author="bulat.bilalov">
+        <createTable tableName="company_candidate">
+            <column name="company_id" type="BIGINT">
+            </column>
+
+            <column name="feedbackForCompanies_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.2.6" author="bulat.bilalov">
+        <addForeignKeyConstraint baseColumnNames="candidate_id"
+                                 baseTableName="candidate_company"
+                                 constraintName="fk_candidate_company_candidate"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="feedbackForCandidates"/>
+    </changeSet>
+
+    <changeSet id="1.2.7" author="bulat.bilalov">
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="company_candidate"
+                                 constraintName="fk_candidate_company_company"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="feedbackForCompanies"/>
+    </changeSet>
+</databaseChangeLog>

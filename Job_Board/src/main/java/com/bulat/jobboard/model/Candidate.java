@@ -3,6 +3,7 @@ package com.bulat.jobboard.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
@@ -59,4 +60,10 @@ public class Candidate extends BaseEntity{
 
     @Column(name = "link_img")
     private String link_img;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "candidate_company",
+            joinColumns = {@JoinColumn(name = "candidate_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "feedbackForCandidate_id", referencedColumnName = "id")})
+    private List<FeedbackForCandidate> feedbacks;
 }
