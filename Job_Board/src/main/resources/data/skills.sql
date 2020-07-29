@@ -19,7 +19,7 @@ insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', '
 insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Junior Kotlin Developer');
 insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Middle Kotlin Developer');
 insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Senior Kotlin Developer');
-insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Senior Java Developer');
+insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Senior Pascal Developer');
 insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Junior Rust Developer');
 insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Middle Rust Developer');
 insert into skills (created, status, updated, name) values ('now()', 'ACTIVE', 'now()', 'Senior Rust Developer');

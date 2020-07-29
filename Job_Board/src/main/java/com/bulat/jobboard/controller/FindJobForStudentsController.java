@@ -2,6 +2,7 @@ package com.bulat.jobboard.controller;
 
 import com.bulat.jobboard.model.*;
 import com.bulat.jobboard.service.CityService;
+import com.bulat.jobboard.service.CompanyService;
 import com.bulat.jobboard.service.CountryService;
 import com.bulat.jobboard.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,19 @@ public class FindJobForStudentsController {
     private final CountryService countryService;
     private final CityService cityService;
     private final SkillService skillService;
+    private final CompanyService companyService;
 
     @Autowired
-    public FindJobForStudentsController(CountryService countryService, CityService cityService, SkillService skillService) {
+    public FindJobForStudentsController(CountryService countryService, CityService cityService, SkillService skillService, CompanyService companyService) {
         this.countryService = countryService;
         this.cityService = cityService;
         this.skillService = skillService;
+        this.companyService = companyService;
     }
 
     @GetMapping
     public String getCompanies(Map<String, Object> model) {
-        model.put("companies", new ArrayList<>());
+        model.put("companies", companyService.findAll());
         model.put("jobNature", Arrays.asList(JobNature.values()));
         model.put("countries", countryService.findAll());
         model.put("cities", cityService.findAll());
