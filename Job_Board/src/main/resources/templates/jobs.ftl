@@ -125,58 +125,56 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select id="location" name="location" class="wide">
-                                                <option data-display="Location">Location</option>
-                                                <option value="California">California</option>
-                                                <option value="Moscow">Moscow </option>
+                                            <input type="number" autocomplete="off" id="age" name="age" placeholder="Age">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select id="jobNature" name="jobNature" class="wide">
+                                                <option data-display="Job nature">Job nature</option>
+                                                <#list jobNature as jobNature>
+                                                    <option value="${jobNature}">${jobNature}</option>
+                                                </#list>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select id="category" name="category" class="wide">
-                                                <option data-display="Category">Category</option>
-                                                <option value="Java Developer">Java Developer</option>
-                                                <option value="Python Developer">Python Developer</option>
-                                                <option value="PHP Developer">PHP Developer</option>
+                                            <select id="country" name="country" class="wide">
+                                                <option data-display="Country">Country</option>
+                                                <#list countries as country>
+                                                    <option value="${country.name}">${country.name}</option>
+                                                </#list>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select class="wide" id="experience" name="experience">
+                                            <select id="city" name="city" class="wide">
+                                                <option data-display="City">City</option>
+                                                <#list cities as city>
+                                                    <option value="${city.name}">${city.name}</option>
+                                                </#list>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select id="skill" name="skill" class="wide">
+                                                <option data-display="Skill">Skill</option>
+                                                <#list skills as skill>
+                                                    <option value="${skill.name}">${skill.name}</option>
+                                                </#list>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
+                                            <select id="experience" name="experience" class="wide">
                                                 <option data-display="Experience">Experience</option>
-                                                <option value="Not experience">Not experience</option>
-                                                <option value="Less 1 year">Less 1 year</option>
-                                                <option value="More 1 year">More 1 year</option>
-                                                <option value="More 3 years">More 3 years</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select id="jobType" name="jobType" class="wide">
-                                                <option data-display="Job type">Job type</option>
-                                                <option value="Full time">Full time</option>
-                                                <option value="Part time">Part time</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select id="qualification" name="qualification" class="wide">
-                                                <option data-display="Qualification">Qualification</option>
-                                                <option value="Programmer">Programmer</option>
-                                                <option value="Tester">Tester</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_field">
-                                            <select id="gender" name="gender" class="wide">
-                                                <option data-display="Gender">Gender</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
+                                                <#list experiences as experience>
+                                                    <option value="${experience}">${experience}</option>
+                                                </#list>
                                             </select>
                                         </div>
                                     </div>
@@ -184,10 +182,10 @@
                             </form>
                         </div>
                         <div class="range_wrap">
-                            <label for="amount">Salary:</label>
+                            <label for="salary">Salary:</label>
                             <div id="slider-range"></div>
                             <p>
-                                <input type="text" id="amount" name="amount" readonly style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
+                                <input type="text" id="salary" name="salary" readonly style="border:0; color:#7A838B; font-size: 14px; font-weight:400;">
                             </p>
                         </div>
                         <div class="reset_btn">
@@ -212,10 +210,10 @@
                                     <div class="serch_cat d-flex justify-content-end">
                                         <select id="sort" name="sort">
                                             <option data-display="Sort by">Sort by</option>
-                                            <option value="name">Name</option></a>
+                                            <option value="name">Name</option>
                                             <option value="location">Location</option>
                                             <option value="jobType">Job type</option>
-                                            <option value="amount">Amount</option>
+                                            <option value="salary">salary</option>
                                         </select>
                                     </div>
                                 </div>
@@ -227,33 +225,33 @@
                         <div class="row">
                             <#list companies as company>
                             <div class="col-lg-12 col-md-12">
-                                <div class="single_jobs white-bg d-flex justify-content-between">
-                                    <div class="jobs_left d-flex align-items-center">
-                                        <div class="thumb">
-                                            <img src="${company.link_img}" alt="">
-                                        </div>
-                                        <div class="jobs_conetent">
-                                            <a href="/company/${company.name}"><h4>${company.name}</h4></a>
-                                            <div class="links_locat d-flex align-items-center">
-                                                <div class="location">
-                                                    <p> <i class="fa fa-map-marker"></i>${company.location}</p>
-                                                </div>
-                                                <div class="location">
-                                                    <p> <i class="fa fa-clock-o"></i>${company.jobType}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="jobs_right">
-                                        <div class="apply_now">
-                                            <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
-                                            <a href="/company/${company.name}" class="boxed-btn3">Apply Now</a>
-                                        </div>
-                                        <div class="date">
-                                            <p>Date line: 31 Jan 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
+<#--                                <div class="single_jobs white-bg d-flex justify-content-between">-->
+<#--                                    <div class="jobs_left d-flex align-items-center">-->
+<#--                                        <div class="thumb">-->
+<#--                                            <img src="${company.link_img}" alt="">-->
+<#--                                        </div>-->
+<#--                                        <div class="jobs_conetent">-->
+<#--                                            <a href="/company/${company.name}"><h4>${company.name}</h4></a>-->
+<#--                                            <div class="links_locat d-flex align-items-center">-->
+<#--                                                <div class="location">-->
+<#--                                                    <p> <i class="fa fa-map-marker"></i>${company.location}</p>-->
+<#--                                                </div>-->
+<#--                                                <div class="location">-->
+<#--                                                    <p> <i class="fa fa-clock-o"></i>${company.jobType}</p>-->
+<#--                                                </div>-->
+<#--                                            </div>-->
+<#--                                        </div>-->
+<#--                                    </div>-->
+<#--                                    <div class="jobs_right">-->
+<#--                                        <div class="apply_now">-->
+<#--                                            <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>-->
+<#--                                            <a href="/company/${company.name}" class="boxed-btn3">Apply Now</a>-->
+<#--                                        </div>-->
+<#--                                        <div class="date">-->
+<#--                                            <p>Date line: 31 Jan 2020</p>-->
+<#--                                        </div>-->
+<#--                                    </div>-->
+<#--                                </div>-->
                             </div>
                             <#else>
                                 No companies
@@ -421,10 +419,10 @@
                 max: 24600,
                 values: [ 750, 24600 ],
                 slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] +"/ Year" );
+                    $( "#salary" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] +"/ Year" );
                 }
             });
-            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+            $( "#salary" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
                 " - $" + $( "#slider-range" ).slider( "values", 1 ) + "/ Year");
         } );
         </script>

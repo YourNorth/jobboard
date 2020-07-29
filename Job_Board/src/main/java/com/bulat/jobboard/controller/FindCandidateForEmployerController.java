@@ -44,6 +44,7 @@ public class FindCandidateForEmployerController {
         model.put("skills", skillService.findAll());
         model.put("educations", educationService.findAll());
         model.put("languages", languageService.findAll());
+        model.put("simpleGender", Gender.NotSpecified);
         return "candidate";
     }
 
