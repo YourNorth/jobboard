@@ -127,7 +127,7 @@
                     <div class="input-group">
                         <select id="country" name="country" class="wide" >
                             <option data-display="Country">Country</option>
-                            <#list country as country>
+                            <#list countries as country>
                                 <option value="${country.name}">${country.name}</option>
                             </#list>
                         </select>

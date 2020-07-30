@@ -38,13 +38,12 @@ public class FindCandidateForEmployerController {
     @GetMapping
     public String getCandidates(Map<String, Object> model){
         model.put("candidates", candidateService.findAll());
-        model.put("genders", Arrays.asList(Gender.values()));
         model.put("cities", cityService.findAll());
-        model.put("country", countryService.findAll());
+        model.put("countries", countryService.findAll());
+        model.put("genders", Arrays.asList(Gender.values()));
         model.put("skills", skillService.findAll());
         model.put("educations", educationService.findAll());
         model.put("languages", languageService.findAll());
-        model.put("simpleGender", Gender.NotSpecified);
         return "candidate";
     }
 
