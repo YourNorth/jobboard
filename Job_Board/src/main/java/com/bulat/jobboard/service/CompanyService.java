@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface CompanyService {
     List<Company> findAll();
+    List<Company> findByName(String name);
 }
