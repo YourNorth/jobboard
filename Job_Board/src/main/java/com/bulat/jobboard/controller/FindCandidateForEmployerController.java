@@ -3,6 +3,7 @@ package com.bulat.jobboard.controller;
 import com.bulat.jobboard.model.Candidate;
 import com.bulat.jobboard.model.Gender;
 import com.bulat.jobboard.service.*;
+import com.bulat.jobboard.utils.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,20 +18,15 @@ import java.util.Arrays;
 public class FindCandidateForEmployerController {
 
     private final CandidateService candidateService;
-    private final CityService cityService;
-    private final CountryService countryService;
-    private final SkillService skillService;
+    private final Attributes attributes;
     private final EducationService educationService;
     private final LanguageService languageService;
 
     @Autowired
-    public FindCandidateForEmployerController(CandidateService candidateService, CityService cityService,
-                                              CountryService countryService, SkillService skillService,
+    public FindCandidateForEmployerController(CandidateService candidateService, Attributes attributes,
                                               EducationService educationService, LanguageService languageService) {
         this.candidateService = candidateService;
-        this.cityService = cityService;
-        this.countryService = countryService;
-        this.skillService = skillService;
+        this.attributes = attributes;
         this.educationService = educationService;
         this.languageService = languageService;
     }
@@ -38,10 +34,8 @@ public class FindCandidateForEmployerController {
     @GetMapping
     public String getCandidates(Map<String, Object> model){
         model.put("candidates", candidateService.findAll());
-        model.put("cities", cityService.findAll());
-        model.put("countries", countryService.findAll());
+        attributes.addAttributes(model);
         model.put("genders", Arrays.asList(Gender.values()));
-        model.put("skills", skillService.findAll());
         model.put("educations", educationService.findAll());
         model.put("languages", languageService.findAll());
         return "candidate";

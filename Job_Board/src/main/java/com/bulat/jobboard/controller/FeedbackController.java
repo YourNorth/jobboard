@@ -42,7 +42,7 @@ public class FeedbackController {
         Optional<User> userOptional = userService.findByEmail(u.getEmail());
         if (userOptional.isPresent()){
             User user = userOptional.get();
-            Attributes.addAttributes(f);
+            Attributes.addAttributesForEntity(f);
             Feedback feedback = feedbackService.save(f);
             if (user.getFeedbacks().isEmpty()){
                 user.setFeedbacks(Collections.singletonList(feedback));
