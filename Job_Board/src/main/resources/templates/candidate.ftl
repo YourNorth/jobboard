@@ -180,9 +180,9 @@
                         <button  class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Find candidate</button>
                     </div>
                     <p></p>
-                    <form action="/candidates" method="get">
+                    <form action="/candidates" method="get" id="form3">
                     <div class="job_btn">
-                        <button  class="boxed-btn3 w-100" type="submit">Show all</button>
+                        <button  class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Show all</button>
                     </div>
                     </form>
                 </div>
@@ -210,7 +210,7 @@
         function validateForm() {
             let gender = document.getElementById('gender');
             let error = '';
-            if (gender.value !== "MALE" && gender.value !== "FEMALE"){
+            if (gender.value !== "MALE" && gender.value !== "FEMALE" && gender.value !== "NotSpecified"){
                 error += 'Gender field cannot be empty! \n';
             }
             if (error !== '') {

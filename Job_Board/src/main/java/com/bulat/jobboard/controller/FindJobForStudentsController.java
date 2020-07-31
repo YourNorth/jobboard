@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
+import com.bulat.jobboard.utils.Filter;
 
 @Controller
 @RequestMapping("/jobs")
@@ -17,26 +18,35 @@ public class FindJobForStudentsController {
 
     private final CompanyService companyService;
     private final Attributes attributes;
+    private final Filter filter;
 
     @Autowired
-    public FindJobForStudentsController(CompanyService companyService, Attributes attributes) {
+    public FindJobForStudentsController(CompanyService companyService, Attributes attributes, Filter filter) {
         this.companyService = companyService;
         this.attributes = attributes;
+        this.filter = filter;
     }
 
     @GetMapping
     public String getCompanies(Map<String, Object> model) {
         model.put("companies", companyService.findAll());
-        attributes.addAttributes(model);
-        model.put("jobNature", Arrays.asList(JobNature.values()));
-        model.put("experiences",Arrays.asList(Experience.values()));
+        addAttributesForModel(model);
         return "jobs";
     }
 
     @PostMapping
     public String sortForCompany(Map<String, Object> model, Company company) {
-        model.put("companies", companyService.findAll());
+        List<Company> companies = companyService.findAll();
+        addAttributesForModel(model);
+        model.put("companies", filter.findByCountryAndCityAndSkill(
+                companies, company.getCountry(), company.getCity(), company.getSkill()));
         System.out.println(company);
         return "jobs";
+    }
+
+    private void addAttributesForModel(Map<String, Object> model){
+        attributes.addAttributes(model);
+        model.put("jobNature", Arrays.asList(JobNature.values()));
+        model.put("experiences",Arrays.asList(Experience.values()));
     }
 }

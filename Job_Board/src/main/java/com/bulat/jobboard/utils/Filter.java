@@ -1,18 +1,17 @@
 package com.bulat.jobboard.utils;
 
-import com.bulat.jobboard.model.BaseEntity;
-import com.bulat.jobboard.model.City;
-import com.bulat.jobboard.model.Country;
-import com.bulat.jobboard.model.Skill;
+import com.bulat.jobboard.model.*;
 import com.bulat.jobboard.service.GettersForCommonFieldsThatAreSearched;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class Filter {
 
-    private List<GettersForCommonFieldsThatAreSearched> findByCountryAndCityAndSkill(
-            List<GettersForCommonFieldsThatAreSearched> entities,
+    public List<? extends GettersForCommonFieldsThatAreSearched> findByCountryAndCityAndSkill(
+            List<? extends GettersForCommonFieldsThatAreSearched> entities,
             Country country, City city, Skill skill) {
         if (!country.getName().equals("Country")){
             entities = entities.stream()

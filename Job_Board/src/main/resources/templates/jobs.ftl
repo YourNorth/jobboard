@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
-                                            <select id="gender" name="gender" class="wide" >
+                                            <select id="gender" name="gender" class="wide">
                                                 <option data-display="Gender">Gender</option>
                                                 <#list genders as gender>
                                                     <option value="${gender}">${gender}</option>
@@ -230,7 +230,8 @@
                                     jobNature.value !== "ANY") {
                                     error += 'Job nature field cannot be empty! \n';
                                 }
-                                if (gender.value !== "MALE" && gender.value !== "FEMALE"){
+                                if (gender.value !== "MALE" && gender.value !== "FEMALE"
+                                    && gender.value !== "NotSpecified") {
                                     error += 'Gender field cannot be empty! \n';
                                 }
                                 if (error !== '') {
