@@ -60,6 +60,14 @@
             <column name="description" type="VARCHAR(3000)">
                 <constraints nullable="false"/>
             </column>
+
+            <column name="gender" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contact" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
