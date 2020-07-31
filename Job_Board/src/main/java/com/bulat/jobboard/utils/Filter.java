@@ -1,5 +1,6 @@
 package com.bulat.jobboard.utils;
 
+import com.bulat.jobboard.model.Candidate;
 import com.bulat.jobboard.model.Gender;
 import com.bulat.jobboard.service.GettersForCommonFieldsThatAreSearched;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,8 @@ public class Filter {
     private final String DEFAULT_NAME_COUNTRY = "Country";
     private final String DEFAULT_NAME_CITY = "City";
     private final String DEFAULT_NAME_SKILL = "Skill";
+    private final String DEFAULT_NAME_LANGUAGE = "Language";
+    private final String DEFAULT_NAME_EDUCATION = "Education";
 
     public List<? extends GettersForCommonFieldsThatAreSearched> findByCountryAndCityAndSkillAndGender(
             List<? extends GettersForCommonFieldsThatAreSearched> entities, GettersForCommonFieldsThatAreSearched entity) {
@@ -30,6 +33,18 @@ public class Filter {
         }
         entities = findByGender(entities, entity.getGender());
         return entities;
+    }
+
+    public List<Candidate> findByLanguageAndEducation(List<Candidate> candidates, Candidate candidate){
+        String nameLanguage = candidate.getNative_language().getName();
+        String nameEducation = candidate.getEducation().getName();
+        if (!nameLanguage.equals(DEFAULT_NAME_LANGUAGE)){
+            candidates = findByLanguage(candidates, nameLanguage);
+        }
+        if (!nameEducation.equals(DEFAULT_NAME_EDUCATION)){
+            candidates = findByEducation(candidates, nameEducation);
+        }
+        return candidates;
     }
 
     private List<? extends GettersForCommonFieldsThatAreSearched> findByCountry(
@@ -57,6 +72,18 @@ public class Filter {
             List<? extends GettersForCommonFieldsThatAreSearched> entities, Gender gender){
         return entities.stream()
                 .filter(x -> x.getGender().equals(gender))
+                .collect(Collectors.toList());
+    }
+
+    private List<Candidate> findByLanguage(List<Candidate> candidates, String nameLanguage){
+        return candidates.stream()
+                .filter(y -> y.getNative_language().getName().equals(nameLanguage))
+                .collect(Collectors.toList());
+    }
+
+    private List<Candidate> findByEducation(List<Candidate> candidates, String nameEducation){
+        return candidates.stream()
+                .filter(y -> y.getEducation().getName().equals(nameEducation))
                 .collect(Collectors.toList());
     }
 }
