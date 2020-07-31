@@ -38,8 +38,8 @@ public class FindJobForStudentsController {
     public String sortForCompany(Map<String, Object> model, Company company) {
         List<Company> companies = companyService.findAll();
         addAttributesForModel(model);
-        model.put("companies", filter.findByCountryAndCityAndSkill(
-                companies, company.getCountry(), company.getCity(), company.getSkill()));
+        model.put("companies", filter.findByCountryAndCityAndSkillAndGender(
+                companies, company));
         System.out.println(company);
         return "jobs";
     }

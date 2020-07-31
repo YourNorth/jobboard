@@ -45,8 +45,8 @@ public class FindCandidateForEmployerController {
     public String findCandidates(Map<String, Object> model, Candidate candidate){
         List<Candidate> candidates = candidateService.findAll();
         addAttributesForModel(model);
-        model.put("candidates", filter.findByCountryAndCityAndSkill(
-                candidates,candidate.getCountry(), candidate.getCity(), candidate.getSkill()));
+        model.put("candidates", filter.findByCountryAndCityAndSkillAndGender(
+                candidates, candidate));
         System.out.println(candidate);
         return "candidate";
     }
