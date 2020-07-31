@@ -1,5 +1,6 @@
 package com.bulat.jobboard.model;
 
+import com.bulat.jobboard.service.GettersForCommonFieldsThatAreSearched;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,12 +18,12 @@ import java.util.List;
  * @see This model is created in classpath:/db/changelog/db.changelog-1.1.xml
  */
 
-public class Candidate extends BaseEntity{
+public class Candidate extends BaseEntity implements GettersForCommonFieldsThatAreSearched {
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "age")
@@ -64,6 +65,6 @@ public class Candidate extends BaseEntity{
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "candidate_company",
             joinColumns = {@JoinColumn(name = "candidate_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "feedbackForCandidate_id", referencedColumnName = "id")})
+            inverseJoinColumns = {@JoinColumn(name = "feedback_for_candidate_id", referencedColumnName = "id")})
     private List<FeedbackForCandidate> feedbacks;
 }

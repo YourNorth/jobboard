@@ -1,5 +1,6 @@
 package com.bulat.jobboard.model;
 
+import com.bulat.jobboard.service.GettersForCommonFieldsThatAreSearched;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ import java.util.List;
  * @see This model is created in classpath:/db/changelog/db.changelog-1.4.xml
  */
 
-public class Company extends BaseEntity{
+public class Company extends BaseEntity implements GettersForCommonFieldsThatAreSearched {
 
     @Column(name = "name")
     private String name;
@@ -25,7 +26,7 @@ public class Company extends BaseEntity{
     @Column(name = "age")
     private String age;
 
-    @Column(name = "jobNature")
+    @Column(name = "job_nature")
     @Enumerated(EnumType.STRING)
     private JobNature jobNature;
 
