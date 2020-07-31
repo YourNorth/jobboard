@@ -34,7 +34,8 @@ public class FindJobForStudentsController {
     }
 
     @PostMapping
-    public String sortForCompany(Company company) {
+    public String sortForCompany(Map<String, Object> model, Company company) {
+        model.put("companies", companyService.findAll());
         System.out.println(company);
         return "jobs";
     }

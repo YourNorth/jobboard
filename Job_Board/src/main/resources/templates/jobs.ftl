@@ -164,6 +164,16 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="single_field">
+                                            <select id="gender" name="gender" class="wide" >
+                                                <option data-display="Gender">Gender</option>
+                                                <#list genders as gender>
+                                                    <option value="${gender}">${gender}</option>
+                                                </#list>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="single_field">
                                             <select id="skill" name="skill" class="wide">
                                                 <option data-display="Skill">Skill</option>
                                                 <#list skills as skill>
@@ -209,6 +219,7 @@
                             function validateForm() {
                                 let experience = document.getElementById('experience');
                                 let jobNature = document.getElementById('jobNature');
+                                let gender = document.getElementById('gender');
                                 let error = '';
                                 if (experience.value !== "LessOneYear" && experience.value !== "MoreOneYear" &&
                                     experience.value !== "LessThreeYears" && experience.value !== "MoreThreeYears" &&
@@ -218,6 +229,9 @@
                                 if (jobNature.value !== "PartTime" && jobNature.value !== "FullTime" &&
                                     jobNature.value !== "ANY") {
                                     error += 'Job nature field cannot be empty! \n';
+                                }
+                                if (gender.value !== "MALE" && gender.value !== "FEMALE"){
+                                    error += 'Gender field cannot be empty! \n';
                                 }
                                 if (error !== '') {
                                     swal("Oops", error, "error");

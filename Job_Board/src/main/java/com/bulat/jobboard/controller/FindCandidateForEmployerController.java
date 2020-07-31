@@ -35,16 +35,15 @@ public class FindCandidateForEmployerController {
     public String getCandidates(Map<String, Object> model){
         model.put("candidates", candidateService.findAll());
         attributes.addAttributes(model);
-        model.put("genders", Arrays.asList(Gender.values()));
         model.put("educations", educationService.findAll());
         model.put("languages", languageService.findAll());
         return "candidate";
     }
 
     @PostMapping
-    public String findCandidates(Candidate candidate, Gender gender){
+    public String findCandidates(Map<String, Object> model, Candidate candidate){
+        model.put("candidates", candidateService.findAll());
         System.out.println(candidate);
-        System.out.println(gender);
         return "candidate";
     }
 }

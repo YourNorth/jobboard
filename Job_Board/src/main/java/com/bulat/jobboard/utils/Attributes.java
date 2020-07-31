@@ -1,6 +1,7 @@
 package com.bulat.jobboard.utils;
 
 import com.bulat.jobboard.model.BaseEntity;
+import com.bulat.jobboard.model.Gender;
 import com.bulat.jobboard.model.State;
 import com.bulat.jobboard.service.CityService;
 import com.bulat.jobboard.service.CountryService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
@@ -49,5 +51,6 @@ public class Attributes {
         model.put("countries", countryService.findAll());
         model.put("cities", cityService.findAll());
         model.put("skills", skillService.findAll());
+        model.put("genders", Arrays.asList(Gender.values()));
     }
 }
