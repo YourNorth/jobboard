@@ -48,7 +48,6 @@ public class FindCandidateForEmployerController {
         List<Candidate> preResult = (List<Candidate>) filter.findByCountryAndCityAndSkillAndGender(candidates, candidate);
         List<Candidate> result = filter.findByLanguageAndEducationAndFirstNameAndLastName(preResult, candidate);
         model.put("candidates", result);
-        System.out.println(candidate);
         return "candidate";
     }
 

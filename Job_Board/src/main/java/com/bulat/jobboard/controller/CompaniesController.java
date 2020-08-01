@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class CompaniesController {
     public String getCompany(@PathVariable("name") String name, Map<String, Object> model){
         Optional<Company> company = companyService.findByName(name);
         if (company.isPresent()){
-            model.put("companies", company.get());
+            model.put("companies", Collections.singletonList(company.get()));
             return "job_details";
         }
         return "jobs";

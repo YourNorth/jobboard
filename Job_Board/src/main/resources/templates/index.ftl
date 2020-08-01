@@ -55,7 +55,7 @@
                                             <li><a href="/jobs">Browse Job</a></li>
                                             <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="/candidate">Candidates </a></li>
+                                                    <li><a href="/candidates">Candidates </a></li>
                                                     <li><a href="/elements">elements</a></li>
                                                 </ul>
                                             </li>
@@ -102,7 +102,6 @@
                             <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">4536+ Jobs listed</h5>
                             <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Find your Dream Job</h3>
                             <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">We provide online instant cash loans with quick approval that suit your term length</p>
-                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">To exit paste this into in URL: https://sirosh.dev/logout </p>
                             <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
                                 <a href="/create_profile" class="boxed-btn3">Upload your Resume</a>
                             </div>
@@ -129,20 +128,21 @@
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select id="location" name="location" class="wide">
-                            <option data-display="Location">Location</option>
-                            <option value="California">California</option>
-                            <option value="Moscow">Moscow </option>
+                        <select id="city" name="city" class="wide">
+                            <option data-display="City">City</option>
+                            <#list cities as city>
+                                <option value="${city.name}">${city.name}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_input">
-                        <select id="category" name="category" class="wide">
-                            <option data-display="Category">Category</option>
-                            <option value="Java Developer">Java Developer</option>
-                            <option value="Python Developer">Python Developer</option>
-                            <option value="PHP Developer">PHP Developer</option>
+                        <select id="skill" name="skill" class="wide">
+                            <option data-display="Skill">Skill</option>
+                            <#list skills as skill>
+                                <option value="${skill.name}">${skill.name}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
@@ -265,10 +265,11 @@
                                     <a href="/company/${company.name}"><h4>${company.name}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i>${company.location}</p>
+                                            <p> <i class="fa fa-map-marker"></i>${company.country.name}
+                                                , ${company.city.name}</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> ${company.jobType}</p>
+                                            <p> <i class="fa fa-clock-o"></i> ${company.jobNature}</p>
                                         </div>
                                     </div>
                                 </div>

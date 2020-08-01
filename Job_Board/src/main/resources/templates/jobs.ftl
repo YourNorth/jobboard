@@ -58,7 +58,7 @@
                                         <li><a href="/jobs">Browse Job</a></li>
                                         <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="/candidate">Candidates </a></li>
+                                                <li><a href="/candidates">Candidates </a></li>
                                                 <li><a href="/elements">elements</a></li>
                                             </ul>
                                         </li>
