@@ -31,59 +31,82 @@ public class Filter {
         if (!nameSkill.equals(DEFAULT_NAME_SKILL)) {
             entities = findBySkill(entities, nameSkill);
         }
-        entities = findByGender(entities, entity.getGender());
+        if (!entity.getGender().equals(Gender.NotSpecified)) {
+            entities = findByGender(entities, entity.getGender());
+        }
         return entities;
     }
 
-    public List<Candidate> findByLanguageAndEducation(List<Candidate> candidates, Candidate candidate){
+    public List<Candidate> findByLanguageAndEducationAndFirstNameAndLastName(
+            List<Candidate> candidates, Candidate candidate) {
         String nameLanguage = candidate.getNative_language().getName();
         String nameEducation = candidate.getEducation().getName();
-        if (!nameLanguage.equals(DEFAULT_NAME_LANGUAGE)){
+        String firstName = candidate.getFirstName();
+        String lastName = candidate.getLastName();
+        if (!nameLanguage.equals(DEFAULT_NAME_LANGUAGE)) {
             candidates = findByLanguage(candidates, nameLanguage);
         }
-        if (!nameEducation.equals(DEFAULT_NAME_EDUCATION)){
+        if (!nameEducation.equals(DEFAULT_NAME_EDUCATION)) {
             candidates = findByEducation(candidates, nameEducation);
+        }
+        if (!firstName.isEmpty()) {
+            candidates = findByFirstName(candidates, firstName);
+        }
+        if (!lastName.isEmpty()) {
+            candidates = findByLastName(candidates, lastName);
         }
         return candidates;
     }
 
     private List<? extends GettersForCommonFieldsThatAreSearched> findByCountry(
-            List<? extends GettersForCommonFieldsThatAreSearched> entities, String nameCountry){
+            List<? extends GettersForCommonFieldsThatAreSearched> entities, String nameCountry) {
         return entities.stream()
                 .filter(x -> x.getCountry().getName().equals(nameCountry))
                 .collect(Collectors.toList());
     }
 
     private List<? extends GettersForCommonFieldsThatAreSearched> findByCity(
-            List<? extends GettersForCommonFieldsThatAreSearched> entities, String nameCity){
+            List<? extends GettersForCommonFieldsThatAreSearched> entities, String nameCity) {
         return entities.stream()
                 .filter(x -> x.getCity().getName().equals(nameCity))
                 .collect(Collectors.toList());
     }
 
     private List<? extends GettersForCommonFieldsThatAreSearched> findBySkill(
-            List<? extends GettersForCommonFieldsThatAreSearched> entities, String nameSkill){
+            List<? extends GettersForCommonFieldsThatAreSearched> entities, String nameSkill) {
         return entities.stream()
                 .filter(x -> x.getSkill().getName().equals(nameSkill))
                 .collect(Collectors.toList());
     }
 
     private List<? extends GettersForCommonFieldsThatAreSearched> findByGender(
-            List<? extends GettersForCommonFieldsThatAreSearched> entities, Gender gender){
+            List<? extends GettersForCommonFieldsThatAreSearched> entities, Gender gender) {
         return entities.stream()
                 .filter(x -> x.getGender().equals(gender))
                 .collect(Collectors.toList());
     }
 
-    private List<Candidate> findByLanguage(List<Candidate> candidates, String nameLanguage){
+    private List<Candidate> findByLanguage(List<Candidate> candidates, String nameLanguage) {
         return candidates.stream()
                 .filter(y -> y.getNative_language().getName().equals(nameLanguage))
                 .collect(Collectors.toList());
     }
 
-    private List<Candidate> findByEducation(List<Candidate> candidates, String nameEducation){
+    private List<Candidate> findByEducation(List<Candidate> candidates, String nameEducation) {
         return candidates.stream()
                 .filter(y -> y.getEducation().getName().equals(nameEducation))
+                .collect(Collectors.toList());
+    }
+
+    private List<Candidate> findByFirstName(List<Candidate> candidates, String firstName) {
+        return candidates.stream()
+                .filter(y -> y.getFirstName().equals(firstName))
+                .collect(Collectors.toList());
+    }
+
+    private List<Candidate> findByLastName(List<Candidate> candidates, String lastName) {
+        return candidates.stream()
+                .filter(y -> y.getLastName().equals(lastName))
                 .collect(Collectors.toList());
     }
 }
