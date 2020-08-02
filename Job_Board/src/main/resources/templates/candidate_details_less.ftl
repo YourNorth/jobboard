@@ -95,13 +95,13 @@
 <!-- header-end -->
 
 <!-- bradcam_area  -->
-<#list users as user>
+<#list candidates as candidate>
     <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>${user.general_skill}</h3>
+                        <h3>${candidate.skill.name}</h3>
                     </div>
                 </div>
             </div>
@@ -117,16 +117,16 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="${user.link_img}" width="50" height="50" alt="">
+                                    <img src="${candidate.link_img}" width="50" height="50" alt="">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="#"><h4>${user.firstName} ${user.lastName}</h4></a>
+                                    <a href="#"><h4>${candidate.firstName} ${candidate.lastName}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p><i class="fa fa-map-marker"></i>${user.city}</p>
+                                            <p> <i class="fa fa-map-marker"></i>${candidate.country.name}, ${candidate.city.name}</p>
                                         </div>
                                         <div class="location">
-                                            <p><i class="fa fa-clock-o"></i>Looking for job</p>
+                                            <p> <i class="fa fa-clock-o"></i>Looking for job</p>
                                         </div>
                                     </div>
                                 </div>
@@ -141,8 +141,8 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Employee description</h4>
-                            <p>${user.description}</p>
-                            <p>${user.description}</p>
+                            <p>${candidate.description}</p>
+                            <p>${candidate.description}</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Responsibility</h4>
@@ -164,13 +164,6 @@
                                 <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
                             </ul>
                         </div>
-                        <div class="single_wrap">
-                            <h4>Benefits</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing.</p>
-                        </div>
                     </div>
                 </div>
 
@@ -182,13 +175,13 @@
                         <div class="job_content">
                             <ul>
                                 <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>General skill: <span> ${user.general_skill}</span></li>
-                                <li>Age: <span> ${user.age}</span></li>
-                                <li>Country: <span> ${user.country}</span></li>
-                                <li>City: <span> ${user.city}</span></li>
-                                <li>Gender: <span> ${user.gender}</span></li>
-                                <li>Education: <span> ${user.education}</span></li>
-                                <li>Native language: <span> ${user.native_language}</span></li>
+                                <li>Skill: <span> ${candidate.skill.name}</span></li>
+                                <li>Age: <span> ${candidate.age}</span></li>
+                                <li>Country: <span> ${candidate.country.name}</span></li>
+                                <li>City: <span> ${candidate.city.name}</span></li>
+                                <li>Gender: <span> ${candidate.gender}</span></li>
+                                <li>Education: <span> ${candidate.education.name}</span></li>
+                                <li>Native language: <span> ${candidate.native_language.name}</span></li>
                             </ul>
                         </div>
                     </div>

@@ -18,6 +18,7 @@ public class Filter {
     private final String DEFAULT_NAME_SKILL = "Skill";
     private final String DEFAULT_NAME_LANGUAGE = "Language";
     private final String DEFAULT_NAME_EDUCATION = "Education";
+    private final String DEFAULT_VALUE_SALARY = "$750 - $24600/ Year";
 
     private List<? extends GettersForCommonFieldsThatAreSearched> result;
     private List<Candidate> resultForCandidates = new ArrayList<>();
@@ -67,29 +68,33 @@ public class Filter {
         return resultForCandidates;
     }
 
-    public List<Company> findByExperienceAndJobNatureAndNameAndAgeAndSalary(List<Company> companies, Company company){
+    public List<Company> findByExperienceAndJobNatureAndNameAndAgeAndSalary(List<Company> companies, Company company) {
         Experience experience = company.getExperience();
         JobNature jobNature = company.getJobNature();
         String name = company.getName();
         String age = company.getAge();
+        String salary = company.getSalary();
         resultForCompanies.addAll(companies);
         companies.clear();
-        if (!experience.equals(Experience.ANY)){
+        if (!experience.equals(Experience.ANY)) {
             resultForCompanies = findByExperience(experience);
         }
-        if (!jobNature.equals(JobNature.ANY)){
+        if (!jobNature.equals(JobNature.ANY)) {
             resultForCompanies = findByJobNature(jobNature);
         }
-        if (!name.isEmpty()){
+        if (!name.isEmpty()) {
             resultForCompanies = findByName(name);
         }
-        if (!age.isEmpty()){
+        if (!age.isEmpty()) {
             resultForCompanies = findByAge(age);
+        }
+        if (!salary.equals(DEFAULT_VALUE_SALARY)) {
+            resultForCompanies = findBySalary(salary);
         }
         return resultForCompanies;
     }
 
-    public List<Candidate> findBySkill(List<Candidate> candidates, String skill){
+    public List<Candidate> findBySkill(List<Candidate> candidates, String skill) {
         List<Candidate> result = new ArrayList<>();
         Pattern pattern = Pattern.compile(".+" + skill + ".+");
         candidates.forEach(user -> {
@@ -149,19 +154,19 @@ public class Filter {
                 .collect(Collectors.toList());
     }
 
-    private List<Company> findByExperience(Experience experience){
+    private List<Company> findByExperience(Experience experience) {
         return resultForCompanies.stream()
                 .filter(y -> y.getExperience().equals(experience))
                 .collect(Collectors.toList());
     }
 
-    private List<Company> findByJobNature(JobNature jobNature){
+    private List<Company> findByJobNature(JobNature jobNature) {
         return resultForCompanies.stream()
                 .filter(y -> y.getJobNature().equals(jobNature))
                 .collect(Collectors.toList());
     }
 
-    private List<Company> findByName(String name){
+    private List<Company> findByName(String name) {
         List<Company> result = new ArrayList<>();
         Pattern pattern = Pattern.compile(name + ".+");
         resultForCompanies.forEach(user -> {
@@ -173,10 +178,24 @@ public class Filter {
         return result;
     }
 
-    private List<Company> findByAge(String age){
+    private List<Company> findByAge(String age) {
         return resultForCompanies.stream()
                 .filter(s -> Integer.parseInt(s.getAge().substring(0, 2)) <= Integer.parseInt(age))
                 .filter(x -> Integer.parseInt(x.getAge().substring(3, 5)) >= Integer.parseInt(age))
                 .collect(Collectors.toList());
+    }
+
+    private List<Company> findBySalary(String salary) {
+        Pattern pattern = Pattern.compile("[ $-/Year]");
+        String[] words = pattern.split(salary);
+        int min = Integer.parseInt(words[1]);
+        int max = Integer.parseInt(words[5]);
+        resultForCompanies = resultForCompanies.stream().filter(s ->
+                Integer.parseInt(s.getSalary().substring(1)) > min)
+                .collect(Collectors.toList());
+        resultForCompanies = resultForCompanies.stream().filter(s ->
+                Integer.parseInt(s.getSalary().substring(1)) < max)
+                .collect(Collectors.toList());
+        return resultForCompanies;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
@@ -22,11 +23,15 @@ public class CandidatesController {
     }
 
     @GetMapping("/candidate/{id}")
-    public String getUser(@PathVariable("id") Long id, Map<String, Object> model){
+    public String getUser(@PathVariable("id") Long id, Map<String, Object> model, HttpServletRequest request){
         Optional<Candidate> candidateOptional = candidateService.findById(id);
         if (candidateOptional.isPresent()){
             model.put("candidates", Collections.singletonList(candidateOptional.get()));
-            return "candidate_details";
+            if (request.isUserInRole("ROLE_EMPLOYER"))
+                return "candidate_details";
+            else{
+                return "candidate_details_less";
+            }
         }else{
             return "candidate";
         }
