@@ -67,9 +67,11 @@ public class Filter {
         return resultForCandidates;
     }
 
-    public List<Company> findByExperienceAndJobNature(List<Company> companies, Company company){
+    public List<Company> findByExperienceAndJobNatureAndNameAndAgeAndSalary(List<Company> companies, Company company){
         Experience experience = company.getExperience();
         JobNature jobNature = company.getJobNature();
+        String name = company.getName();
+        String age = company.getAge();
         resultForCompanies.addAll(companies);
         companies.clear();
         if (!experience.equals(Experience.ANY)){
@@ -78,7 +80,13 @@ public class Filter {
         if (!jobNature.equals(JobNature.ANY)){
             resultForCompanies = findByJobNature(jobNature);
         }
-        return companies;
+        if (!name.isEmpty()){
+            resultForCompanies = findByName(name);
+        }
+        if (!age.isEmpty()){
+            resultForCompanies = findByAge(age);
+        }
+        return resultForCompanies;
     }
 
     public List<Candidate> findBySkill(List<Candidate> candidates, String skill){
@@ -150,6 +158,25 @@ public class Filter {
     private List<Company> findByJobNature(JobNature jobNature){
         return resultForCompanies.stream()
                 .filter(y -> y.getJobNature().equals(jobNature))
+                .collect(Collectors.toList());
+    }
+
+    private List<Company> findByName(String name){
+        List<Company> result = new ArrayList<>();
+        Pattern pattern = Pattern.compile(name + ".+");
+        resultForCompanies.forEach(user -> {
+            Matcher matcher = pattern.matcher(user.getName());
+            if (matcher.matches()) {
+                result.add(user);
+            }
+        });
+        return result;
+    }
+
+    private List<Company> findByAge(String age){
+        return resultForCompanies.stream()
+                .filter(s -> Integer.parseInt(s.getAge().substring(0, 2)) <= Integer.parseInt(age))
+                .filter(x -> Integer.parseInt(x.getAge().substring(3, 5)) >= Integer.parseInt(age))
                 .collect(Collectors.toList());
     }
 }

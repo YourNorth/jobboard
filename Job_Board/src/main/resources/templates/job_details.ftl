@@ -256,6 +256,7 @@
                                 <li>Job Nature: <span> ${company.jobNature}</span></li>
                                 <li>Experience: <span> ${company.experience}</span></li>
                                 <li>Age: <span> ${company.age}</span></li>
+                                <li>Gender: <span> ${company.gender}</span></li>
                             </ul>
                         </div>
                     </div>
