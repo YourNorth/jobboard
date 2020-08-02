@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Component
@@ -77,6 +79,18 @@ public class Filter {
             resultForCompanies = findByJobNature(jobNature);
         }
         return companies;
+    }
+
+    public List<Candidate> findBySkill(List<Candidate> candidates, String skill){
+        List<Candidate> result = new ArrayList<>();
+        Pattern pattern = Pattern.compile(".+" + skill + ".+");
+        candidates.forEach(user -> {
+            Matcher matcher = pattern.matcher(user.getSkill().getName());
+            if (matcher.matches()) {
+                result.add(user);
+            }
+        });
+        return result;
     }
 
     private List<? extends GettersForCommonFieldsThatAreSearched> findByCountry(String nameCountry) {
