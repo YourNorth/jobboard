@@ -101,7 +101,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>${company.category}</h3>
+                        <h3>${company.skill.name}</h3>
                     </div>
                 </div>
             </div>
@@ -123,10 +123,10 @@
                                     <a href="#"><h4>${company.name}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p><i class="fa fa-map-marker"></i>${company.location}</p>
+                                            <p> <i class="fa fa-map-marker"></i>${company.country.name}, ${company.city.name}</p>
                                         </div>
                                         <div class="location">
-                                            <p><i class="fa fa-clock-o"></i>${company.jobType}</p>
+                                            <p> <i class="fa fa-clock-o"></i>${company.jobNature}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -188,14 +188,14 @@
                         <div class="job_content">
                             <ul>
                                 <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>Vacancy: <span> ${company.category}</span></li>
-                                <li>Salary: <span>${company.amount}</span></li>
-                                <li>Location: <span> ${company.location}</span></li>
-                                <li>Job Nature: <span> ${company.jobType}</span></li>
+                                <li>Vacancy: <span> ${company.skill.name}</span></li>
+                                <li>Salary: <span>${company.salary}</span></li>
+                                <li>Country: <span> ${company.country.name}</span></li>
+                                <li>City: <span> ${company.city.name}</span></li>
+                                <li>Job Nature: <span> ${company.jobNature}</span></li>
                                 <li>Experience: <span> ${company.experience}</span></li>
+                                <li>Age: <span> ${company.age}</span></li>
                                 <li>Gender: <span> ${company.gender}</span></li>
-                                <li>Qualification: <span> ${company.qualification}</span></li>
-                                <li>Contact: <span> ${company.email}</span></li>
                             </ul>
                         </div>
                     </div>
