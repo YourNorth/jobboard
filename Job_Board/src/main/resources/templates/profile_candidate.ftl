@@ -122,7 +122,7 @@
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" autocomplete="off" id="country" name="country" placeholder="Country">
+                        <input type="text" autocomplete="off" id="email" name="email" placeholder="Email">
                     </div>
                     <p></p>
                     <div class="single_input">
@@ -130,28 +130,54 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="city" name="city" placeholder="City">
+                    <div class="single_field">
+                        <select id="country" name="country" class="wide">
+                            <option data-display="Country">Country</option>
+                            <#list countries as country>
+                                <option value="${country.name}">${country.name}</option>
+                            </#list>
+                        </select>
                     </div>
-                    <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="general_skill" name="general_skill" placeholder="General skill">
+                    <div class="single_field">
+                        <select id="city" name="city" class="wide">
+                            <option data-display="City">City</option>
+                            <#list cities as city>
+                                <option value="${city.name}">${city.name}</option>
+                            </#list>
+                        </select>
                     </div>
-                    <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="native_language" name="native_language" placeholder="Native language">
-                    </div>
-                    <p></p>
-                    <div class="single_input">
-                        <input type="text" autocomplete="off" id="education" name="education" placeholder="Education">
+                    <div class="input-group">
+                        <select id="education" name="education" class="wide" >
+                            <option data-display="Education">Education</option>
+                            <#list educations as education>
+                                <option value="${education.name}">${education.name}</option>
+                            </#list>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select id="gender" name="gender" class="wide" >
+                    <div class="single_field">
+                        <select id="skill" name="skill" class="wide">
+                            <option data-display="Skill">Skill</option>
+                            <#list skills as skill>
+                                <option value="${skill.name}">${skill.name}</option>
+                            </#list>
+                        </select>
+                    </div>
+                    <div class="single_field">
+                        <select id="gender" name="gender" class="wide">
                             <option data-display="Gender">Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <#list genders as gender>
+                                <option value="${gender}">${gender}</option>
+                            </#list>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <select id="native_language" name="native_language" class="wide" >
+                            <option data-display="Language">Language</option>
+                            <#list languages as language>
+                                <option value="${language.name}">${language.name}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
