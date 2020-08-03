@@ -119,52 +119,67 @@
                     </div>
                     <p></p>
                     <div class="single_input">
-                        <input type="text" autocomplete="off" id="location" name="location" placeholder="Location">
+                        <input type="text" autocomplete="off" id="age" name="age" placeholder="Age (XX - XX)">
                     </div>
                     <p></p>
                     <div class="single_input">
                         <input type="number" min="1" max="1000000" autocomplete="off"
-                               id="amount" name="amount" placeholder="Amount in year">
+                               id="salary" name="salary" placeholder="Amount in year">
+                    </div>
+                    <p></p>
+                    <div class="single_input">
+                        <input type="text" autocomplete="off" id="contact" name="contact" placeholder="Email">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select id="category" name="category" class="wide">
-                            <option data-display="Experience">Experience</option>
-                            <option value="Java Developer">Java Developer</option>
-                            <option value="Python Developer">Python Developer</option>
-                            <option value="PHP Developer">PHP Developer</option>
+                    <div class="single_field">
+                        <select id="jobNature" name="jobNature" class="wide">
+                            <option data-display="Job nature">Job nature</option>
+                            <#list jobNature as jobNature>
+                                <option value="${jobNature}">${jobNature}</option>
+                            </#list>
                         </select>
                     </div>
-                    <div class="single_input">
-                        <select id="experience" name="experience" class="wide">
-                            <option data-display="Experience">Experience</option>
-                            <option value="Less 1 year">Less 1 year</option>
-                            <option value="More 1 year">More 1 year</option>
-                            <option value="More 3 years">More 3 years</option>
+                    <div class="single_field">
+                        <select id="country" name="country" class="wide">
+                            <option data-display="Country">Country</option>
+                            <#list countries as country>
+                                <option value="${country.name}">${country.name}</option>
+                            </#list>
                         </select>
                     </div>
-                    <div class="single_input">
-                        <select id="jobType" name="jobType" class="wide">
-                            <option data-display="Job type">job Type</option>
-                            <option value="Full time">Full time</option>
-                            <option value="Part time">Part time</option>
+                    <div class="single_field">
+                        <select id="city" name="city" class="wide">
+                            <option data-display="City">City</option>
+                            <#list cities as city>
+                                <option value="${city.name}">${city.name}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <div class="single_input">
-                        <select id="qualification" name="qualification" class="wide">
-                            <option data-display="Qualification">Qualification</option>
-                            <option value="Programmer">Programmer</option>
-                            <option value="Tester">Tester</option>
+                    <div class="single_field">
+                        <select id="skill" name="skill" class="wide">
+                            <option data-display="Skill">Skill</option>
+                            <#list skills as skill>
+                                <option value="${skill.name}">${skill.name}</option>
+                            </#list>
                         </select>
                     </div>
-                    <div class="single_input">
+                    <div class="single_field">
                         <select id="gender" name="gender" class="wide">
                             <option data-display="Gender">Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <#list genders as gender>
+                                <option value="${gender}">${gender}</option>
+                            </#list>
+                        </select>
+                    </div>
+                    <div class="single_field">
+                        <select id="experience" name="experience" class="wide">
+                            <option data-display="Experience">Experience</option>
+                            <#list experiences as experience>
+                                <option value="${experience}">${experience}</option>
+                            </#list>
                         </select>
                     </div>
                 </div>
@@ -175,6 +190,10 @@
                             </p>
                         </div>
                     </div>
+                </div>
+                <div class="form-group col-lg-9 col-md-12">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea placeholder="Description" class="form-control" id="description" name="description" rows="10" cols="90"></textarea>
                 </div>
             </div>
         </div>
