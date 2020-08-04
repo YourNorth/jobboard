@@ -10,6 +10,7 @@
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -23,6 +24,14 @@
     <link rel="stylesheet" href="/css/gijgo.css">
     <link rel="stylesheet" href="/css/animate.min.css">
     <link rel="stylesheet" href="/css/slicknav.css">
+    <script type="text/javascript">
+        function funOnLoad() {
+            <#if title?? && message?? && category?? >
+            swal('${title}', '${message}', '${category}');
+            </#if>
+        }
+        window.onload = funOnLoad;
+    </script>
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
@@ -630,9 +639,9 @@
                             <h3 class="footer_title">
                                 Subscribe
                             </h3>
-                            <form action="#" class="newsletter_form">
-                                <input type="text" placeholder="Enter your mail">
-                                <button type="submit">Subscribe</button>
+                            <form action="/subscribe" class="newsletter_form" id="form">
+                                <input id="email" name="email" type="text" placeholder="Enter your mail">
+                                <button type="submit" onclick="return validateForm()">Subscribe</button>
                             </form>
                             <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
                                 luckily.</p>
@@ -651,6 +660,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function validateForm() {
+            let email = document.getElementById('email');
+            let error = '';
+            let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+            if (!email_regexp.test(email.value)) {
+                error += 'Email is entered incorrectly! \n';
+            }
+            if (error !== '') {
+                swal("Oops", error, "error");
+                return false;
+            } else {
+                let form = document.getElementById("form");
+                form.submit();
+            }
+        }
+    </script>
     <!--/ footer end  -->
 
     <!-- link that opens popup -->

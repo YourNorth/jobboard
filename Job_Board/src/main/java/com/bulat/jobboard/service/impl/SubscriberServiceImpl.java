@@ -6,6 +6,8 @@ import com.bulat.jobboard.service.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class SubscriberServiceImpl implements SubscriberService {
 
@@ -19,5 +21,10 @@ public class SubscriberServiceImpl implements SubscriberService {
     @Override
     public Subscriber save(Subscriber subscriber) {
         return subscriberRepository.save(subscriber);
+    }
+
+    @Override
+    public Optional<Subscriber> findByEmail(String email) {
+        return subscriberRepository.findByEmail(email);
     }
 }

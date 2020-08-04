@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -39,6 +40,18 @@ public class Attributes {
         map.addAttribute("title", "Oops!");
         map.addAttribute("message", message.isEmpty() ? "Error!" : message);
         map.addAttribute("category", "error");
+    }
+
+    public static void addSuccessAttributesWithFlash(@NotNull RedirectAttributes redirectAttributes, String message){
+        redirectAttributes.addFlashAttribute("title", "Good job!");
+        redirectAttributes.addFlashAttribute("message", message.isEmpty() ? "Success!" : message);
+        redirectAttributes.addFlashAttribute("category", "success");
+    }
+
+    public static void addErrorAttributesWithFlash(@NotNull RedirectAttributes redirectAttributes, String message){
+        redirectAttributes.addFlashAttribute("title", "Oops!");
+        redirectAttributes.addFlashAttribute("message", message.isEmpty() ? "Error!" : message);
+        redirectAttributes.addFlashAttribute("category", "error");
     }
 
     public static void addAttributesForEntity(BaseEntity baseEntity) {
