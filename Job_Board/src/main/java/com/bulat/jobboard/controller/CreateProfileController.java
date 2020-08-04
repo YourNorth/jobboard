@@ -1,6 +1,7 @@
 package com.bulat.jobboard.controller;
 
 import com.bulat.jobboard.model.Candidate;
+import com.bulat.jobboard.model.Company;
 import com.bulat.jobboard.model.Gender;
 import com.bulat.jobboard.service.CandidateService;
 import com.bulat.jobboard.utils.Attributes;
@@ -42,6 +43,12 @@ public class CreateProfileController {
     public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender) {
         System.out.println(candidate);
         candidateService.save(fillingTheEntity(candidate, gender));
+        return "redirect:/create_profile";
+    }
+
+    @PostMapping("/create_profile_employer")
+    public String createProfileForEmployer(Company company) {
+        System.out.println(company);
         return "redirect:/create_profile";
     }
 

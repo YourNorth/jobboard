@@ -202,37 +202,51 @@
 <script>
     function validateForm() {
         let name = document.getElementById('name');
-        let location = document.getElementById('location');
-        let experience = document.getElementById('experience');
-        let amount = document.getElementById('amount');
-        let jobType = document.getElementById('jobType');
-        let category = document.getElementById('category');
-        let qualification = document.getElementById('qualification');
+        let country = document.getElementById('country');
+        let city = document.getElementById('city');
+        let salary = document.getElementById('salary');
+        let email = document.getElementById('contact');
+        let age = document.getElementById('age');
+        let skill = document.getElementById('skill');
         let gender = document.getElementById('gender');
+        let jobNature = document.getElementById('jobNature');
+        let experience = document.getElementById('experience');
+        let description = document.getElementById('description');
         let error = '';
         if (name.value.length < 2 || name.value.length > 50) {
             error += 'Company name must be between 2 and 50 characters! \n';
         }
-        if (amount.value < 1 || amount.value.length > 1000000) {
-            error += 'Amount must be between 1 and 1_000_000! \n';
+        if (country.value === 'Country'){
+            error += 'Country field cannot be empty! \n';
         }
-        if (location.value.length < 2 || location.value.length > 50) {
-            error += 'Location must be between 2 and 50 characters! \n';
+        if (city.value === 'City') {
+            error += 'City field cannot be empty! \n';
+        }
+        if (salary.value < 1 || salary.value.length > 1000000) {
+            error += 'Salary must be between 1 and 1_000_000! \n';
+        }
+        let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+        let age_regexp = /[0-9]{2}-[0-9]{2}/i;
+        if (!email_regexp.test(email.value)) {
+            error += 'Email is entered incorrectly! \n';
+        }
+        if (!age_regexp.test(age.value)){
+            error += 'Age is entered incorrectly! \n';
+        }
+        if (skill.value === 'Skill') {
+            error += 'City field cannot be empty! \n';
+        }
+        if (gender.value === "Gender"){
+            error += 'Gender field cannot be empty! \n';
         }
         if (experience.value === "Experience"){
             error += 'Experience field cannot be empty! \n';
         }
-        if (jobType.value === "Job type"){
-            error += 'Job type field cannot be empty! \n';
+        if (jobNature.value === 'Job nature'){
+            error += 'JobNature field cannot be empty! \n';
         }
-        if (category.value === "Category"){
-            error += 'Category field cannot be empty! \n';
-        }
-        if (qualification.value === "Qualification"){
-            error += 'Qualification field cannot be empty! \n';
-        }
-        if (gender.value === "Gender"){
-            error += 'Gender field cannot be empty! \n';
+        if (description.value.length < 12 || description.value.length > 255) {
+            error += 'Description must be between 12 and 255 characters! \n';
         }
         if (error !== '') {
             swal("Oops", error, "error");
