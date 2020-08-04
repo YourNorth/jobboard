@@ -199,41 +199,46 @@
     function validateForm() {
         let firstName = document.getElementById('firstName');
         let lastName = document.getElementById('lastName');
-        let country = document.getElementById('country');
-        let city = document.getElementById('city');
         let age = document.getElementById('age');
-        let general_skill = document.getElementById('general_skill');
-        let native_language = document.getElementById('native_language');
+        let country = document.getElementById('country');
         let description = document.getElementById('description');
-        let gender = document.getElementById('gender');
+        let email = document.getElementById('email');
+        let city = document.getElementById('city');
         let education = document.getElementById('education');
+        let skill = document.getElementById('skill');
+        let gender = document.getElementById('gender');
+        let language = document.getElementById('language');
         let error = '';
+        let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+        if (!email_regexp.test(email.value)) {
+            error += 'Email is entered incorrectly! \n';
+        }
         if (firstName.value.length < 2 || firstName.value.length > 50) {
             error += 'First name must be between 2 and 50 characters! \n';
         }
         if (lastName.value.length < 2 || lastName.value.length > 50) {
             error += 'Last name must be between 2 and 50 characters! \n';
         }
-        if (country.value.length < 3 || country.value.length > 50) {
-            error += 'Country must be between 3 and 50 characters! \n';
+        if (country.value === 'Country') {
+            error += 'Country field cannot be empty! \n';
         }
-        if (city.value.length < 2 || city.value.length > 50) {
-            error += 'City must be between 2 and 50 characters! \n';
+        if (city.value === 'City') {
+            error += 'City field cannot be empty! \n';
+        }
+        if (education.value === 'Education') {
+            error += 'Education field cannot be empty! \n';
         }
         if (age.value < 12 || age.value > 100) {
             error += 'Age must be between 12 and 100 characters! \n';
         }
-        if (general_skill.value.length < 5 || general_skill.value.length > 50) {
-            error += 'General skill must be between 5 and 50 characters! \n';
+        if (skill.value === 'Skill') {
+            error += 'Skill field cannot be empty! \n';
         }
-        if (native_language.value.length < 5 || native_language.value.length > 50) {
-            error += 'Native language must be between 5 and 50 characters! \n';
+        if (language.value === 'Language') {
+            error += 'Language field cannot be empty! \n';
         }
         if (description.value.length < 12 || description.value.length > 255) {
             error += 'Description must be between 12 and 255 characters! \n';
-        }
-        if (education.value.length < 3 || education.value.length > 50) {
-            error += 'Education must be between 3 and 50 characters! \n';
         }
         if (gender.value === "Gender"){
             error += 'Gender field cannot be empty! \n';
