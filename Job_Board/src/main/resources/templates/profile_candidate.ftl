@@ -207,7 +207,7 @@
         let education = document.getElementById('education');
         let skill = document.getElementById('skill');
         let gender1 = document.getElementById('gender1');
-        let language = document.getElementById('language');
+        let native_language = document.getElementById('native_language');
         let error = '';
         let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
         if (!email_regexp.test(email.value)) {
@@ -234,7 +234,7 @@
         if (skill.value === 'Skill') {
             error += 'Skill field cannot be empty! \n';
         }
-        if (language.value === 'Language') {
+        if (native_language.value === 'Language') {
             error += 'Language field cannot be empty! \n';
         }
         if (description.value.length < 12 || description.value.length > 255) {

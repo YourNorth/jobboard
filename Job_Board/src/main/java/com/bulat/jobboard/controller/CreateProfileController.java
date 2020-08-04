@@ -41,14 +41,13 @@ public class CreateProfileController {
     @PostMapping("/create_profile_candidate")
     public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender) {
         System.out.println(candidate);
-        //candidateService.save(fillingTheEntity(candidate, gender));
+        candidateService.save(fillingTheEntity(candidate, gender));
         return "redirect:/create_profile";
     }
 
     private Candidate fillingTheEntity(Candidate candidate, String gender){
-        Attributes.addAttributesForEntity(candidate);
         candidate.setGender(Gender.valueOf(gender));
-        //FIXME: Полученные id поля преобразовать в строку
+        attributes.addAttributesByIds(candidate);
         candidate.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
         return candidate;
     }

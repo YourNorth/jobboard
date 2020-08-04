@@ -99,4 +99,13 @@ public class Attributes {
         model.put("jobNature", Arrays.asList(JobNature.values()));
         model.put("experiences",Arrays.asList(Experience.values()));
     }
+
+    public void addAttributesByIds(Candidate candidate){
+        addAttributesForEntity(candidate);
+        candidate.setCountry(countryService.findByName(candidate.getCountry().getName()).orElse(new Country()));
+        candidate.setCity(cityService.findByName(candidate.getCity().getName()).orElse(new City()));
+        candidate.setSkill(skillService.findByName(candidate.getSkill().getName()).orElse(new Skill()));
+        candidate.setEducation(educationService.findByName(candidate.getEducation().getName()).orElse(new Education()));
+        candidate.setNative_language(languageService.findByName(candidate.getNative_language().getName()).orElse(new Language()));
+    }
 }

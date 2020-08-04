@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SkillServiceImpl implements SkillService {
@@ -21,5 +22,10 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public List<Skill> findAll() {
         return skillRepository.findAll();
+    }
+
+    @Override
+    public Optional<Skill> findByName(String name) {
+        return skillRepository.findByName(name);
     }
 }

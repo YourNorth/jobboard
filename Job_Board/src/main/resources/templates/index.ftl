@@ -335,7 +335,7 @@
             <div class="row align-items-center mb-40">
                 <div class="col-lg-6 col-md-6">
                     <div class="section_title">
-                        <h3>Top Companies</h3>
+                        <h3>Top Companies by Amount</h3>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
