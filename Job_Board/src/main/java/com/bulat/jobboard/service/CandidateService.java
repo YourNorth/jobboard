@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface CandidateService {
     List<Candidate> findAll();
     Optional<Candidate> findById(Long id);
+    Candidate save(Candidate candidate);
 }

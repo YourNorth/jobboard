@@ -165,7 +165,7 @@
                         </select>
                     </div>
                     <div class="single_field">
-                        <select id="gender" name="gender" class="wide">
+                        <select id="gender1" name="gender1" class="wide">
                             <option data-display="Gender">Gender</option>
                             <#list genders as gender>
                                 <option value="${gender}">${gender}</option>
@@ -206,7 +206,7 @@
         let city = document.getElementById('city');
         let education = document.getElementById('education');
         let skill = document.getElementById('skill');
-        let gender = document.getElementById('gender');
+        let gender1 = document.getElementById('gender1');
         let language = document.getElementById('language');
         let error = '';
         let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
@@ -240,7 +240,7 @@
         if (description.value.length < 12 || description.value.length > 255) {
             error += 'Description must be between 12 and 255 characters! \n';
         }
-        if (gender.value === "Gender"){
+        if (gender1.value === "Gender"){
             error += 'Gender field cannot be empty! \n';
         }
         if (error !== '') {

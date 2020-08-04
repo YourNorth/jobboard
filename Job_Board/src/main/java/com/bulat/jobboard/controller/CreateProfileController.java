@@ -1,12 +1,14 @@
 package com.bulat.jobboard.controller;
 
 import com.bulat.jobboard.model.Candidate;
+import com.bulat.jobboard.model.Gender;
+import com.bulat.jobboard.service.CandidateService;
 import com.bulat.jobboard.utils.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -15,10 +17,12 @@ import java.util.Map;
 public class CreateProfileController {
 
     private final Attributes attributes;
+    private final CandidateService candidateService;
 
     @Autowired
-    public CreateProfileController(Attributes attributes) {
+    public CreateProfileController(Attributes attributes, CandidateService candidateService) {
         this.attributes = attributes;
+        this.candidateService = candidateService;
     }
 
     @GetMapping("/create_profile")
@@ -35,8 +39,17 @@ public class CreateProfileController {
     }
 
     @PostMapping("/create_profile_candidate")
-    public String createProfileForCandidate(Candidate candidate) {
+    public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender) {
         System.out.println(candidate);
+        //candidateService.save(fillingTheEntity(candidate, gender));
         return "redirect:/create_profile";
+    }
+
+    private Candidate fillingTheEntity(Candidate candidate, String gender){
+        Attributes.addAttributesForEntity(candidate);
+        candidate.setGender(Gender.valueOf(gender));
+        //FIXME: Полученные id поля преобразовать в строку
+        candidate.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
+        return candidate;
     }
 }
