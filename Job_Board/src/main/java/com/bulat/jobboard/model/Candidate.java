@@ -6,6 +6,13 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author Bulat Bilalov
+ * @version 1.0
+ * @see com.bulat.jobboard.model.BaseEntity
+ * @see com.bulat.jobboard.service.GettersForCommonFieldsThatAreSearched
+ * @see db.changelog/db.changelog-1.0.xml
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 @NoArgsConstructor
@@ -13,11 +20,6 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "candidates")
-
-/**
- * @see This model is created in classpath:/db/changelog/db.changelog-1.1.xml
- */
-
 public class Candidate extends BaseEntity implements GettersForCommonFieldsThatAreSearched {
 
     @Column(name = "first_name")

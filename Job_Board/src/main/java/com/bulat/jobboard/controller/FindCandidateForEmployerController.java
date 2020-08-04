@@ -20,25 +20,20 @@ public class FindCandidateForEmployerController {
 
     private final CandidateService candidateService;
     private final Attributes attributes;
-    private final EducationService educationService;
-    private final LanguageService languageService;
     private final Filter filter;
 
     @Autowired
     public FindCandidateForEmployerController(CandidateService candidateService, Attributes attributes,
-                                              EducationService educationService, LanguageService languageService,
                                               Filter filter) {
         this.candidateService = candidateService;
         this.attributes = attributes;
-        this.educationService = educationService;
-        this.languageService = languageService;
         this.filter = filter;
     }
 
     @GetMapping
     public String getCandidates(Map<String, Object> model){
         model.put("candidates", candidateService.findAll());
-        addAttributesForModel(model);
+        attributes.addAttributesForCandidates(model);
         return "candidate";
     }
 
@@ -46,23 +41,17 @@ public class FindCandidateForEmployerController {
     public String getCandidateByKeySkills(@PathVariable(value="skill") String skill, Map<String, Object> model){
         List<Candidate> candidates = candidateService.findAll();
         model.put("candidates", filter.findBySkill(candidates, skill));
-        addAttributesForModel(model);
+        attributes.addAttributesForCandidates(model);
         return "candidate";
     }
 
     @PostMapping
     public String findCandidates(Map<String, Object> model, Candidate candidate){
         List<Candidate> candidates = candidateService.findAll();
-        addAttributesForModel(model);
+        attributes.addAttributesForCandidates(model);
         List<Candidate> preResult = (List<Candidate>) filter.findByCountryAndCityAndSkillAndGender(candidates, candidate);
         List<Candidate> result = filter.findByLanguageAndEducationAndFirstNameAndLastName(preResult, candidate);
         model.put("candidates", result);
         return "candidate";
-    }
-
-    public void addAttributesForModel(Map<String, Object> model){
-        attributes.addAttributes(model);
-        model.put("educations", educationService.findAll());
-        model.put("languages", languageService.findAll());
     }
 }

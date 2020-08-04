@@ -1,11 +1,7 @@
 package com.bulat.jobboard.utils;
 
-import com.bulat.jobboard.model.BaseEntity;
-import com.bulat.jobboard.model.Gender;
-import com.bulat.jobboard.model.State;
-import com.bulat.jobboard.service.CityService;
-import com.bulat.jobboard.service.CountryService;
-import com.bulat.jobboard.service.SkillService;
+import com.bulat.jobboard.model.*;
+import com.bulat.jobboard.service.*;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,12 +18,17 @@ public class Attributes {
     private final CityService cityService;
     private final CountryService countryService;
     private final SkillService skillService;
+    private final EducationService educationService;
+    private final LanguageService languageService;
 
     @Autowired
-    public Attributes(CityService cityService, CountryService countryService, SkillService skillService) {
+    public Attributes(CityService cityService, CountryService countryService, SkillService skillService,
+                      EducationService educationService, LanguageService languageService) {
         this.cityService = cityService;
         this.countryService = countryService;
         this.skillService = skillService;
+        this.educationService = educationService;
+        this.languageService = languageService;
     }
 
     public static void addSuccessAttributes(@NotNull ModelMap map, String message) {
@@ -65,5 +66,17 @@ public class Attributes {
         model.put("cities", cityService.findAll());
         model.put("skills", skillService.findAll());
         model.put("genders", Arrays.asList(Gender.values()));
+    }
+
+    public void addAttributesForCandidates(@NotNull Map<String, Object> model){
+        addAttributes(model);
+        model.put("educations", educationService.findAll());
+        model.put("languages", languageService.findAll());
+    }
+
+    public void addAttributesForCompanies(Map<String, Object> model){
+        addAttributes(model);
+        model.put("jobNature", Arrays.asList(JobNature.values()));
+        model.put("experiences",Arrays.asList(Experience.values()));
     }
 }

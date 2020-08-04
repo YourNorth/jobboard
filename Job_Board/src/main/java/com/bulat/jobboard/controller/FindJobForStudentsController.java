@@ -30,24 +30,17 @@ public class FindJobForStudentsController {
     @GetMapping
     public String getCompanies(Map<String, Object> model) {
         model.put("companies", companyService.findAll());
-        addAttributesForModel(model);
+        attributes.addAttributesForCompanies(model);
         return "jobs";
     }
 
     @PostMapping
     public String sortForCompany(Map<String, Object> model, Company company) {
         List<Company> companies = companyService.findAll();
-        addAttributesForModel(model);
+        attributes.addAttributesForCompanies(model);
         List<Company> preResult = (List<Company>) filter.findByCountryAndCityAndSkillAndGender(companies, company);
         List<Company> result = filter.findByExperienceAndJobNatureAndNameAndAgeAndSalary(preResult, company);
         model.put("companies", result);
-        System.out.println(company);
         return "jobs";
-    }
-
-    private void addAttributesForModel(Map<String, Object> model){
-        attributes.addAttributes(model);
-        model.put("jobNature", Arrays.asList(JobNature.values()));
-        model.put("experiences",Arrays.asList(Experience.values()));
     }
 }
