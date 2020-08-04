@@ -12,6 +12,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * Class for adding attributes for models and displaying positive and negative messages on the site
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Component
 public class Attributes {
 
@@ -21,6 +26,13 @@ public class Attributes {
     private final EducationService educationService;
     private final LanguageService languageService;
 
+    /**
+     * @param cityService Service interacting with the table of cities
+     * @param countryService Service interacting with the table of countries
+     * @param skillService Service interacting with the skill table (programming languages)
+     * @param educationService Service interacting with the table of universities
+     * @param languageService Service interacting with the language table
+     */
     @Autowired
     public Attributes(CityService cityService, CountryService countryService, SkillService skillService,
                       EducationService educationService, LanguageService languageService) {
@@ -31,12 +43,20 @@ public class Attributes {
         this.languageService = languageService;
     }
 
+    /**
+     * @param map Page model with a successful window
+     * @param message The message that will be displayed on the site
+     */
     public static void addSuccessAttributes(@NotNull ModelMap map, String message) {
         map.addAttribute("title", "Good job!");
         map.addAttribute("message", message.isEmpty() ? "Success!" : message);
         map.addAttribute("category", "success");
     }
 
+    /**
+     * @param map Error message page model
+     * @param message The message that will be displayed on the site
+     */
     public static void addErrorAttributes(@NotNull ModelMap map, String message) {
         map.addAttribute("title", "Oops!");
         map.addAttribute("message", message.isEmpty() ? "Error!" : message);
