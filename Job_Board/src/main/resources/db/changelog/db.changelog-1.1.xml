@@ -93,6 +93,10 @@
                 <constraints nullable="true"/>
             </column>
 
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
         </createTable>
     </changeSet>
 
