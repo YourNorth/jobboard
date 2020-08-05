@@ -54,7 +54,7 @@ public class CreateProfileController {
 
     private Candidate fillingTheEntity(Candidate candidate, String gender){
         candidate.setGender(Gender.valueOf(gender));
-        attributes.addAttributesByIds(candidate);
+        attributes.addAttributesByIdsForCandidates(candidate);
         candidate.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
         return candidate;
     }
