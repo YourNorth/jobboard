@@ -6,6 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * Skill (programming language)
+ * @author Bulat Bilalov
+ * @see com.bulat.jobboard.model.BaseEntity
+ * @see db.changelog/db.changelog-1.1.xml
+ */
 @EqualsAndHashCode(callSuper = false)
 @Data
 @NoArgsConstructor
@@ -13,13 +19,9 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "skills")
-
-/**
- * @see This model is created in classpath:/db/changelog/db.changelog-1.1.xml
- */
-
 public class Skill extends BaseEntity{
 
+    /** Skill name */
     @Column(name = "name")
     private String name;
 }
