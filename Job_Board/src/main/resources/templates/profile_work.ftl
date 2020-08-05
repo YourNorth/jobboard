@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="single_field">
-                        <select id="jobNature" name="jobNature" class="wide">
+                        <select id="jobNature1" name="jobNature1" class="wide">
                             <option data-display="Job nature">Job nature</option>
                             <#list jobNature as jobNature>
                                 <option value="${jobNature}">${jobNature}</option>
@@ -167,7 +167,7 @@
                         </select>
                     </div>
                     <div class="single_field">
-                        <select id="gender" name="gender" class="wide">
+                        <select id="gender1" name="gender1" class="wide">
                             <option data-display="Gender">Gender</option>
                             <#list genders as gender>
                                 <option value="${gender}">${gender}</option>
@@ -175,7 +175,7 @@
                         </select>
                     </div>
                     <div class="single_field">
-                        <select id="experience" name="experience" class="wide">
+                        <select id="experience1" name="experience1" class="wide">
                             <option data-display="Experience">Experience</option>
                             <#list experiences as experience>
                                 <option value="${experience}">${experience}</option>
@@ -208,9 +208,9 @@
         let email = document.getElementById('contact');
         let age = document.getElementById('age');
         let skill = document.getElementById('skill');
-        let gender = document.getElementById('gender');
-        let jobNature = document.getElementById('jobNature');
-        let experience = document.getElementById('experience');
+        let gender1 = document.getElementById('gender1');
+        let jobNature1 = document.getElementById('jobNature1');
+        let experience1 = document.getElementById('experience1');
         let description = document.getElementById('description');
         let error = '';
         if (name.value.length < 2 || name.value.length > 50) {
@@ -236,13 +236,13 @@
         if (skill.value === 'Skill') {
             error += 'City field cannot be empty! \n';
         }
-        if (gender.value === "Gender"){
+        if (gender1.value === "Gender"){
             error += 'Gender field cannot be empty! \n';
         }
-        if (experience.value === "Experience"){
+        if (experience1.value === "Experience"){
             error += 'Experience field cannot be empty! \n';
         }
-        if (jobNature.value === 'Job nature'){
+        if (jobNature1.value === 'Job nature'){
             error += 'JobNature field cannot be empty! \n';
         }
         if (description.value.length < 12 || description.value.length > 255) {

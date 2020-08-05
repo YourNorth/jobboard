@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface CompanyService {
     List<Company> findAll();
     Optional<Company> findByName(String name);
+    Company save(Company company);
 }

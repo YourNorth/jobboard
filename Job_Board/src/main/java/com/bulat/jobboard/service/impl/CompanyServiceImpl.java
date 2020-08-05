@@ -28,4 +28,9 @@ public class CompanyServiceImpl implements CompanyService {
     public Optional<Company> findByName(String name) {
         return companyRepository.findByName(name);
     }
+
+    @Override
+    public Company save(Company company) {
+        return companyRepository.save(company);
+    }
 }

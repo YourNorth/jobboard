@@ -100,14 +100,18 @@ public class Attributes {
         model.put("experiences",Arrays.asList(Experience.values()));
     }
 
-    public void addAttributesByIdsForCandidates(Candidate candidate){
+    public void addAttributesByIdsForCandidates(Candidate candidate, String gender){
         addAttributesByIds(candidate);
+        candidate.setGender(Gender.valueOf(gender));
         candidate.setEducation(educationService.findByName(candidate.getEducation().getName()).orElse(new Education()));
         candidate.setNative_language(languageService.findByName(candidate.getNative_language().getName()).orElse(new Language()));
     }
 
-    public void addAttributesByIdsForCompanies(Company company){
+    public void addAttributesByIdsForCompanies(Company company, String gender, String jobNature, String experience){
         addAttributesByIds(company);
+        company.setGender(Gender.valueOf(gender));
+        company.setJobNature(JobNature.valueOf(jobNature));
+        company.setExperience(Experience.valueOf(experience));
     }
 
     public void addAttributesByIds(GettersForCommonFieldsThatAreSearched entity){
