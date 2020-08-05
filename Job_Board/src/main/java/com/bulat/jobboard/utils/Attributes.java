@@ -100,12 +100,21 @@ public class Attributes {
         model.put("experiences",Arrays.asList(Experience.values()));
     }
 
-    public void addAttributesByIds(Candidate candidate){
-        addAttributesForEntity(candidate);
-        candidate.setCountry(countryService.findByName(candidate.getCountry().getName()).orElse(new Country()));
-        candidate.setCity(cityService.findByName(candidate.getCity().getName()).orElse(new City()));
-        candidate.setSkill(skillService.findByName(candidate.getSkill().getName()).orElse(new Skill()));
+    public void addAttributesByIdsForCandidates(Candidate candidate){
+        addAttributesByIds(candidate);
         candidate.setEducation(educationService.findByName(candidate.getEducation().getName()).orElse(new Education()));
         candidate.setNative_language(languageService.findByName(candidate.getNative_language().getName()).orElse(new Language()));
     }
+
+    public void addAttributesByIdsForCompanies(Company company){
+        addAttributesByIds(company);
+    }
+
+    public void addAttributesByIds(GettersForCommonFieldsThatAreSearched entity){
+        addAttributesForEntity((BaseEntity) entity);
+        entity.setCountry(countryService.findByName(entity.getCountry().getName()).orElse(new Country()));
+        entity.setCity(cityService.findByName(entity.getCity().getName()).orElse(new City()));
+        entity.setSkill(skillService.findByName(entity.getSkill().getName()).orElse(new Skill()));
+    }
+
 }
