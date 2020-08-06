@@ -77,6 +77,10 @@ public class Candidate extends BaseEntity implements GettersForCommonFieldsThatA
     @Column(name = "link_img")
     private String link_img;
 
+    /** Link to the unique identifier of the registered user */
+    @Column(name = "user_id")
+    private Long user_id;
+
     /** Feedback left candidates to the site */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "candidate_company",

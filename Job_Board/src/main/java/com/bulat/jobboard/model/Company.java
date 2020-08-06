@@ -77,6 +77,10 @@ public class Company extends BaseEntity implements GettersForCommonFieldsThatAre
     @Column(name = "contact")
     private String contact;
 
+    /** Link to the unique identifier of the registered user */
+    @Column(name = "user_id")
+    private Long user_id;
+
     /** Company feedback left */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "company_candidate",
