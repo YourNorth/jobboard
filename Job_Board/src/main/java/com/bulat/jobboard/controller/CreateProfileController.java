@@ -2,10 +2,13 @@ package com.bulat.jobboard.controller;
 
 import com.bulat.jobboard.model.Candidate;
 import com.bulat.jobboard.model.Company;
+import com.bulat.jobboard.model.User;
+import com.bulat.jobboard.security.details.UserDetailsImpl;
 import com.bulat.jobboard.service.CandidateService;
 import com.bulat.jobboard.service.CompanyService;
 import com.bulat.jobboard.utils.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,8 +45,10 @@ public class CreateProfileController {
     }
 
     @PostMapping("/create_profile_candidate")
-    public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender) {
+    public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender,
+                                            Authentication authentication) {
         System.out.println(candidate);
+        candidate.setUser_id(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
         candidateService.save(fillingTheCandidates(candidate, gender));
         return "redirect:/create_profile";
     }
@@ -51,8 +56,10 @@ public class CreateProfileController {
     @PostMapping("/create_profile_employer")
     public String createProfileForEmployer(Company company, @RequestParam("gender1") String gender,
                                            @RequestParam("jobNature1") String jobNature,
-                                           @RequestParam("experience1") String experience) {
+                                           @RequestParam("experience1") String experience,
+                                           Authentication authentication) {
         System.out.println(company);
+        company.setUser_id(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
         companyService.save(fillingTheCompanies(company, gender, jobNature, experience));
         return "redirect:/create_profile";
     }
