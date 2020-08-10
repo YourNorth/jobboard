@@ -30,6 +30,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public List<Company> findByUserId(Long user_id) {
+        return companyRepository.findByUserId(user_id);
+    }
+
+    @Override
     public Company save(Company company) {
         return companyRepository.save(company);
     }

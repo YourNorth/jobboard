@@ -79,7 +79,7 @@ public class Company extends BaseEntity implements GettersForCommonFieldsThatAre
 
     /** Link to the unique identifier of the registered user */
     @Column(name = "user_id")
-    private Long user_id;
+    private Long userId;
 
     /** Company feedback left */
     @ManyToMany(fetch = FetchType.EAGER)

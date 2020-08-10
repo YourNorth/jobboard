@@ -57,7 +57,7 @@
                                         <li><a href="/jobs">Browse Job</a></li>
                                         <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="/candidate">Candidates </a></li>
+                                                <li><a href="/candidates">Candidates </a></li>
                                                 <li><a href="/elements">elements</a></li>
                                             </ul>
                                         </li>
@@ -141,14 +141,7 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Job description</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing.</p>
-                            <p>Variations of passages of lorem Ipsum available, but the majority have suffered
-                                alteration in some form, by injected humour, or randomised words which don't look even
-                                slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be
-                                sure there isn't anything embarrassing.</p>
+                            <p>${company.description?substring(0, 50)}</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Responsibility</h4>

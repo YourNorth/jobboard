@@ -330,7 +330,7 @@
                         <h3 class="footer_title">
                             Subscribe
                         </h3>
-                        <form action="/subscribe" class="newsletter_form" id="form">
+                        <form action="/subscribe" class="newsletter_form" id="form" method="get">
                             <input id="email" name="email" type="text" placeholder="Enter your mail">
                             <button type="submit" onclick="return validateForm()">Subscribe</button>
                         </form>

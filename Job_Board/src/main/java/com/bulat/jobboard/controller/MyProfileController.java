@@ -1,9 +1,11 @@
 package com.bulat.jobboard.controller;
 
 import com.bulat.jobboard.model.Candidate;
+import com.bulat.jobboard.model.Company;
 import com.bulat.jobboard.model.User;
 import com.bulat.jobboard.security.details.UserDetailsImpl;
 import com.bulat.jobboard.service.CandidateService;
+import com.bulat.jobboard.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,10 +19,12 @@ import java.util.Map;
 public class MyProfileController {
 
     private final CandidateService candidateService;
+    private final CompanyService companyService;
 
     @Autowired
-    public MyProfileController(CandidateService candidateService) {
+    public MyProfileController(CandidateService candidateService, CompanyService companyService) {
         this.candidateService = candidateService;
+        this.companyService = companyService;
     }
 
     @GetMapping("/my_profile")
@@ -36,6 +40,13 @@ public class MyProfileController {
             }
         }
         if (request.isUserInRole("ROLE_EMPLOYER")) {
+            List<Company> companies = companyService.findByUserId(user.getId());
+            if (companies.isEmpty()){
+                return "not_have_profile";
+            }else{
+                model.put("companies", companyService.findByUserId(user.getId()));
+                return "job_details_less";
+            }
 
         }
         return "candidate_details_less";

@@ -57,7 +57,7 @@ public class CreateProfileController {
                                            @RequestParam("jobNature1") String jobNature,
                                            @RequestParam("experience1") String experience,
                                            Authentication authentication) {
-        company.setUser_id(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
+        company.setUserId(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
         companyService.save(fillingTheCompanies(company, gender, jobNature, experience));
         return "redirect:/create_profile";
     }
