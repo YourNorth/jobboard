@@ -30,6 +30,11 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
+    public List<Candidate> findByUserId(Long user_id) {
+        return candidateRepository.findByUserId(user_id);
+    }
+
+    @Override
     public Candidate save(Candidate candidate) {
         return candidateRepository.save(candidate);
     }

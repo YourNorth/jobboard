@@ -141,8 +141,7 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Employee description</h4>
-                            <p>${candidate.description}</p>
-                            <p>${candidate.description}</p>
+                            <p>${candidate.description?substring(0, 50)}</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Responsibility</h4>

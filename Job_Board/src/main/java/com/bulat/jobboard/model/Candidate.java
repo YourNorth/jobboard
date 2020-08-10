@@ -79,7 +79,7 @@ public class Candidate extends BaseEntity implements GettersForCommonFieldsThatA
 
     /** Link to the unique identifier of the registered user */
     @Column(name = "user_id")
-    private Long user_id;
+    private Long userId;
 
     /** Feedback left candidates to the site */
     @ManyToMany(fetch = FetchType.EAGER)

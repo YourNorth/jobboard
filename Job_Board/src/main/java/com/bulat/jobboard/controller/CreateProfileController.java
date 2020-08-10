@@ -47,8 +47,7 @@ public class CreateProfileController {
     @PostMapping("/create_profile_candidate")
     public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender,
                                             Authentication authentication) {
-        System.out.println(candidate);
-        candidate.setUser_id(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
+        candidate.setUserId(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
         candidateService.save(fillingTheCandidates(candidate, gender));
         return "redirect:/create_profile";
     }
@@ -58,7 +57,6 @@ public class CreateProfileController {
                                            @RequestParam("jobNature1") String jobNature,
                                            @RequestParam("experience1") String experience,
                                            Authentication authentication) {
-        System.out.println(company);
         company.setUser_id(((UserDetailsImpl) authentication.getPrincipal()).getUser().getId());
         companyService.save(fillingTheCompanies(company, gender, jobNature, experience));
         return "redirect:/create_profile";
