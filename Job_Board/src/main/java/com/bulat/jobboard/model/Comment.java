@@ -9,6 +9,7 @@ import javax.persistence.*;
  * @author Bulat Bilalov
  * @version 1.0
  * @see com.bulat.jobboard.model.BaseEntity
+ * @see db.changelog\db.changelog-1.6.xml
  */
 @EqualsAndHashCode(callSuper = false)
 @Data
