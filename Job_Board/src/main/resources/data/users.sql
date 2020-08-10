@@ -12,3 +12,8 @@ insert into user_roles(user_id, role_id)
 VALUES (100, 1),
        (101, 3),
        (102, 2);
+
+Insert Into comments (created, status, updated, description, first_name, last_name, link_img, user_id) VALUES
+(now(), 'ACTIVE', now(), 'I love this site!', 'Bulat', 'Bilalov', '/img/testmonial/author.png', 100),
+(now(), 'ACTIVE', now(), 'I love this site!', 'Timur', 'Kalinka', '/img/testmonial/author.png', 101),
+(now(), 'ACTIVE', now(), 'I love this site!', 'By', 'Ti', '/img/testmonial/author.png', 102);
