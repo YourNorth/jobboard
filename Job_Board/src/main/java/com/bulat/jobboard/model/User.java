@@ -50,4 +50,9 @@ public class User extends BaseEntity{
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "feedback_id", referencedColumnName = "id")})
     private List<Feedback> feedbacks;
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }
