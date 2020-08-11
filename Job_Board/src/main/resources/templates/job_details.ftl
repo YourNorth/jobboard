@@ -382,11 +382,11 @@
                             </h3>
                             <form action="/subscribe" class="newsletter_form" id="form">
                                 <input id="email" name="email" type="text" placeholder="Enter your mail">
-                                <button type="submit" onclick="return validateForm()">Subscribe</button>
+                                <button type="submit" onclick="return validateForm1()">Subscribe</button>
                             </form>
 
                             <script>
-                                function validateForm() {
+                                function validateForm1() {
                                     let email = document.getElementById('email');
                                     let error = '';
                                     let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;

@@ -206,7 +206,7 @@
                             </p>
                         </div>
                         <div class="reset_btn">
-                            <button class="boxed-btn3 w-100" type="submit" onclick="return validateForm()">Find job
+                            <button class="boxed-btn3 w-100" type="submit" onclick="return validateForm1()">Find job
                             </button>
                         </div>
                         <p></p>
@@ -216,7 +216,7 @@
                             </div>
                         </form>
                         <script>
-                            function validateForm() {
+                            function validateForm1() {
                                 let experience = document.getElementById('experience');
                                 let jobNature = document.getElementById('jobNature');
                                 let gender = document.getElementById('gender');

@@ -332,37 +332,37 @@
                         </ul>
                     </div>
                 </div>
-<#--                <div class="col-xl-4 col-md-6 col-lg-4">-->
-<#--                    <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">-->
-<#--                        <h3 class="footer_title">-->
-<#--                            Subscribe-->
-<#--                        </h3>-->
-<#--                        <form action="/subscribe" class="newsletter_form" id="form">-->
-<#--                            <input id="email" name="email" type="text" placeholder="Enter your mail">-->
-<#--                            <button type="submit" onclick="return validateForm()">Subscribe</button>-->
-<#--                        </form>-->
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
+                        <h3 class="footer_title">
+                            Subscribe
+                        </h3>
+                        <form action="/subscribe" class="newsletter_form" id="form">
+                            <input id="email" name="email" type="text" placeholder="Enter your mail">
+                            <button type="submit" onclick="return validateForm1()">Subscribe</button>
+                        </form>
 
-<#--                        <script>-->
-<#--                            function validateForm() {-->
-<#--                                let email = document.getElementById('email');-->
-<#--                                let error = '';-->
-<#--                                let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;-->
-<#--                                if (!email_regexp.test(email.value)) {-->
-<#--                                    error += 'Email is entered incorrectly! \n';-->
-<#--                                }-->
-<#--                                if (error !== '') {-->
-<#--                                    swal("Oops", error, "error");-->
-<#--                                    return false;-->
-<#--                                } else {-->
-<#--                                    let form = document.getElementById("form");-->
-<#--                                    form.submit();-->
-<#--                                }-->
-<#--                            }-->
-<#--                        </script>-->
-<#--                        <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems-->
-<#--                            luckily.</p>-->
-<#--                    </div>-->
-<#--                </div>-->
+                        <script>
+                            function validateForm1() {
+                                let email = document.getElementById('email');
+                                let error = '';
+                                let email_regexp = /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/i;
+                                if (!email_regexp.test(email.value)) {
+                                    error += 'Email is entered incorrectly! \n';
+                                }
+                                if (error !== '') {
+                                    swal("Oops", error, "error");
+                                    return false;
+                                } else {
+                                    let form = document.getElementById("form");
+                                    form.submit();
+                                }
+                            }
+                        </script>
+                        <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
+                            luckily.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
