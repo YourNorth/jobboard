@@ -44,6 +44,7 @@ public class Attributes {
     }
 
     /**
+     * Method for adding a window on success
      * @param map Page model with a successful window
      * @param message The message that will be displayed on the site
      */
@@ -54,6 +55,7 @@ public class Attributes {
     }
 
     /**
+     * Method for adding a window on an unsuccessful process
      * @param map Error message page model
      * @param message The message that will be displayed on the site
      */
@@ -63,24 +65,43 @@ public class Attributes {
         map.addAttribute("category", "error");
     }
 
+
+    /**
+     * Method for adding a window where redirection occurs on successful process
+     * @param redirectAttributes Redirect model for adding a message
+     * @param message The message displayed in the window on the site
+     */
     public static void addSuccessAttributesWithFlash(@NotNull RedirectAttributes redirectAttributes, String message){
         redirectAttributes.addFlashAttribute("title", "Good job!");
         redirectAttributes.addFlashAttribute("message", message.isEmpty() ? "Success!" : message);
         redirectAttributes.addFlashAttribute("category", "success");
     }
 
+    /**
+     * Method for adding a window where redirection occurs in case of an unsuccessful process
+     * @param redirectAttributes Redirect model for adding a message
+     * @param message The message displayed in the window on the site
+     */
     public static void addErrorAttributesWithFlash(@NotNull RedirectAttributes redirectAttributes, String message){
         redirectAttributes.addFlashAttribute("title", "Oops!");
         redirectAttributes.addFlashAttribute("message", message.isEmpty() ? "Error!" : message);
         redirectAttributes.addFlashAttribute("category", "error");
     }
 
+    /**
+     * Method for adding basic fields for inherited classes BaseEntity
+     * @param baseEntity Any class inheriting BaseEntity
+     */
     public static void addAttributesForEntity(BaseEntity baseEntity) {
         baseEntity.setStatus(State.ACTIVE);
         baseEntity.setCreated(new Date());
         baseEntity.setUpdated(new Date());
     }
 
+    /**
+     * Method for adding basic objects to a model
+     * @param model Model for adding basic elements
+     */
     public void addAttributes(@NotNull Map<String, Object> model){
         model.put("countries", countryService.findAll());
         model.put("cities", cityService.findAll());
@@ -88,18 +109,31 @@ public class Attributes {
         model.put("genders", Arrays.asList(Gender.values()));
     }
 
+    /**
+     * Method for adding master elements for candidate entity
+     * @param model Model for adding basic elements
+     */
     public void addAttributesForCandidates(@NotNull Map<String, Object> model){
         addAttributes(model);
         model.put("educations", educationService.findAll());
         model.put("languages", languageService.findAll());
     }
 
+    /**
+     * Method for adding basic elements for a company entity
+     * @param model Model for adding basic elements
+     */
     public void addAttributesForCompanies(Map<String, Object> model){
         addAttributes(model);
         model.put("jobNature", Arrays.asList(JobNature.values()));
         model.put("experiences",Arrays.asList(Experience.values()));
     }
 
+    /**
+     * Method for adding enumerated fields for a candidate entity
+     * @param candidate Candidate object
+     * @param gender Gender field
+     */
     public void addAttributesByIdsForCandidates(Candidate candidate, String gender){
         addAttributesByIds(candidate);
         candidate.setGender(Gender.valueOf(gender));
@@ -107,6 +141,13 @@ public class Attributes {
         candidate.setNative_language(languageService.findByName(candidate.getNative_language().getName()).orElse(new Language()));
     }
 
+    /**
+     * Method for adding enumerated fields for a company entity
+     * @param company Company field
+     * @param gender Gender field
+     * @param jobNature JobNature field
+     * @param experience Experience field
+     */
     public void addAttributesByIdsForCompanies(Company company, String gender, String jobNature, String experience){
         addAttributesByIds(company);
         company.setGender(Gender.valueOf(gender));
@@ -114,6 +155,10 @@ public class Attributes {
         company.setExperience(Experience.valueOf(experience));
     }
 
+    /**
+     * Method for adding enumerated fields for a entity
+     * @param entity Entity in which to fit fields with enumeration
+     */
     public void addAttributesByIds(GettersForCommonFieldsThatAreSearched entity){
         addAttributesForEntity((BaseEntity) entity);
         entity.setCountry(countryService.findByName(entity.getCountry().getName()).orElse(new Country()));

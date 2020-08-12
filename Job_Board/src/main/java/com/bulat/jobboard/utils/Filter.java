@@ -10,18 +10,40 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * Class for identifying entities by various parameters
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Component
 public class Filter {
 
+    /** Default form value for countries */
     private final String DEFAULT_NAME_COUNTRY = "Country";
+
+    /** Default form value for cities */
     private final String DEFAULT_NAME_CITY = "City";
+
+    /** Default form value for skills */
     private final String DEFAULT_NAME_SKILL = "Skill";
+
+    /** Default form value for languages */
     private final String DEFAULT_NAME_LANGUAGE = "Language";
+
+    /** Default form value for educations */
     private final String DEFAULT_NAME_EDUCATION = "Education";
+
+    /** Default form value for salary */
     private final String DEFAULT_VALUE_SALARY = "$750 - $24600/ Year";
 
+
+    /** List of all entities to search */
     private List<? extends GettersForCommonFieldsThatAreSearched> result;
+
+    /** List of all candidates for search */
     private List<Candidate> resultForCandidates = new ArrayList<>();
+
+    /** List of all companies for search */
     private List<Company> resultForCompanies = new ArrayList<>();
 
     public List<? extends GettersForCommonFieldsThatAreSearched> findByCountryAndCityAndSkillAndGender(
