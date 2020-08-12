@@ -7,14 +7,29 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/**
+ * A class responsible for various features spring security by user
+ * @author Bulat Bilalov
+ * @version 1.0
+ * @see org.springframework.security.core.userdetails.UserDetails
+ */
 public class UserDetailsImpl implements UserDetails {
 
+    /** Register user */
     private final User user;
 
+    /**
+     * Constructor receiving user
+     * @param user Register user
+     */
     public UserDetailsImpl(User user) {
         this.user = user;
     }
 
+    /**
+     * User object getter method
+     * @return User object
+     */
     public User getUser() {
         return user;
     }

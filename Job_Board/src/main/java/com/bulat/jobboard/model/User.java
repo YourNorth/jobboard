@@ -51,6 +51,11 @@ public class User extends BaseEntity{
             inverseJoinColumns = {@JoinColumn(name = "feedback_id", referencedColumnName = "id")})
     private List<Feedback> feedbacks;
 
+    /**
+     * Constructor for testing spring security
+     * @param email The mail that the user specified during registration
+     * @param password Hashed password specified during registration
+     */
     public User(String email, String password) {
         this.email = email;
         this.password = password;
