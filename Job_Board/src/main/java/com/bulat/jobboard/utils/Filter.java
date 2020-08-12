@@ -46,6 +46,12 @@ public class Filter {
     /** List of all companies for search */
     private List<Company> resultForCompanies = new ArrayList<>();
 
+    /**
+     * A method that selects entities according to the following criteria: Country, City, Skill, Gender
+     * @param entities Entity list to search
+     * @param entity Entity by parameters that will be searched
+     * @return List of entities satisfying search
+     */
     public List<? extends GettersForCommonFieldsThatAreSearched> findByCountryAndCityAndSkillAndGender(
             List<? extends GettersForCommonFieldsThatAreSearched> entities, GettersForCommonFieldsThatAreSearched entity) {
         String nameCountry = entity.getCountry().getName();
@@ -67,6 +73,12 @@ public class Filter {
         return result;
     }
 
+    /**
+     * A method that selects entities according to the following criteria: Language, Education, FirstName, LastName
+     * @param candidates Entity list to search
+     * @param candidate Entity by parameters that will be searched
+     * @return List of entities satisfying search
+     */
     public List<Candidate> findByLanguageAndEducationAndFirstNameAndLastName(
             List<Candidate> candidates, Candidate candidate) {
         String nameLanguage = candidate.getNative_language().getName();
@@ -90,6 +102,12 @@ public class Filter {
         return resultForCandidates;
     }
 
+    /**
+     * A method that selects entities according to the following criteria: Experience, JobNature, Name, Age, Salary
+     * @param companies Entity list to search
+     * @param company Entity by parameters that will be searched
+     * @return List of entities satisfying search
+     */
     public List<Company> findByExperienceAndJobNatureAndNameAndAgeAndSalary(List<Company> companies, Company company) {
         Experience experience = company.getExperience();
         JobNature jobNature = company.getJobNature();
@@ -116,6 +134,12 @@ public class Filter {
         return resultForCompanies;
     }
 
+
+    /**
+     * @param candidates Entity list to search
+     * @param skill Search parameter
+     * @return List of entities satisfying search
+     */
     public List<Candidate> findBySkill(List<Candidate> candidates, String skill) {
         List<Candidate> result = new ArrayList<>();
         Pattern pattern = Pattern.compile(".+" + skill + ".+");
@@ -128,66 +152,110 @@ public class Filter {
         return result;
     }
 
+    /**
+     * @param nameCountry Search parameter
+     * @return List of entities satisfying search
+     */
     private List<? extends GettersForCommonFieldsThatAreSearched> findByCountry(String nameCountry) {
         return result.stream()
                 .filter(x -> x.getCountry().getName().equals(nameCountry))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param nameCity Search parameter
+     * @return List of entities satisfying search
+     */
     private List<? extends GettersForCommonFieldsThatAreSearched> findByCity(String nameCity) {
         return result.stream()
                 .filter(x -> x.getCity().getName().equals(nameCity))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param nameSkill Search parameter
+     * @return List of entities satisfying search
+     */
     private List<? extends GettersForCommonFieldsThatAreSearched> findBySkill(String nameSkill) {
         return result.stream()
                 .filter(x -> x.getSkill().getName().equals(nameSkill))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param gender Search parameter
+     * @return List of entities satisfying search
+     */
     private List<? extends GettersForCommonFieldsThatAreSearched> findByGender(Gender gender) {
         return result.stream()
                 .filter(x -> x.getGender().equals(gender))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param nameLanguage Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Candidate> findByLanguage(String nameLanguage) {
         return resultForCandidates.stream()
                 .filter(y -> y.getNative_language().getName().equals(nameLanguage))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param nameEducation Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Candidate> findByEducation(String nameEducation) {
         return resultForCandidates.stream()
                 .filter(y -> y.getEducation().getName().equals(nameEducation))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param firstName Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Candidate> findByFirstName(String firstName) {
         return resultForCandidates.stream()
                 .filter(y -> y.getFirstName().equals(firstName))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param lastName Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Candidate> findByLastName(String lastName) {
         return resultForCandidates.stream()
                 .filter(y -> y.getLastName().equals(lastName))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param experience Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Company> findByExperience(Experience experience) {
         return resultForCompanies.stream()
                 .filter(y -> y.getExperience().equals(experience))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param jobNature Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Company> findByJobNature(JobNature jobNature) {
         return resultForCompanies.stream()
                 .filter(y -> y.getJobNature().equals(jobNature))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param name Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Company> findByName(String name) {
         List<Company> result = new ArrayList<>();
         Pattern pattern = Pattern.compile(name + ".+");
@@ -200,6 +268,10 @@ public class Filter {
         return result;
     }
 
+    /**
+     * @param age Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Company> findByAge(String age) {
         return resultForCompanies.stream()
                 .filter(s -> Integer.parseInt(s.getAge().substring(0, 2)) <= Integer.parseInt(age))
@@ -207,6 +279,10 @@ public class Filter {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @param salary Search parameter
+     * @return List of entities satisfying search
+     */
     private List<Company> findBySalary(String salary) {
         Pattern pattern = Pattern.compile("[ $-/Year]");
         String[] words = pattern.split(salary);
