@@ -20,6 +20,11 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 import java.util.Objects;
 
+/**
+ * Controller for processing registration on the site
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("/signUp")
 public class SignUpController {
@@ -41,11 +46,19 @@ public class SignUpController {
         this.emailService = emailService;
     }
 
+    /** Method for getting registration page */
     @GetMapping
     public String getRegistration(){
         return "signUp";
     }
 
+    /**
+     * Registration method
+     * @param user Filled user
+     * @param result Form validation object
+     * @param model Page model
+     * @param captchaResponse Raised value for captcha
+     */
     @PostMapping
     public String signUp(User user, BindingResult result, ModelMap model,
                          @RequestParam("g-recaptcha-response") String captchaResponse){
@@ -61,6 +74,11 @@ public class SignUpController {
         return "/signUp";
     }
 
+    /**
+     * Registration error checking method
+     * @param captchaResponse Raised value for captcha
+     * @param result Form validation object
+     */
     private StringBuilder errorChecking(String captchaResponse, BindingResult result){
         StringBuilder builder = new StringBuilder();
         String url = String.format(CAPTCHA_URL, secret, captchaResponse);

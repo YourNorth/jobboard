@@ -12,6 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
+/**
+ * Controller for subscribing to site news
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("/subscribe")
 public class SubscribersController {
@@ -23,6 +28,11 @@ public class SubscribersController {
         this.subscriberService = subscriberService;
     }
 
+    /**
+     * Method for subscribing to site news
+     * @param redirectAttributes Report check
+     * @param email Mail that subscribe to site news
+     */
     @GetMapping
     public String addSubscribe(RedirectAttributes redirectAttributes, @RequestParam(name = "email") String email){
         Optional<Subscriber> subscriberOptional = subscriberService.findByEmail(email);

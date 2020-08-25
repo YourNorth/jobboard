@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
+/**
+ * Controller for creating profiles for candidates and companies
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 public class CreateProfileController {
 
@@ -31,6 +36,12 @@ public class CreateProfileController {
         this.companyService = companyService;
     }
 
+    /**
+     * Method to view having profile
+     * @param request Request to check the user's role
+     * @param model Page model
+     * @return
+     */
     @GetMapping("/create_profile")
     public String getCreateProfile(HttpServletRequest request, Map<String, Object> model) {
         if (request.isUserInRole("ROLE_CANDIDATE")) {
@@ -44,6 +55,12 @@ public class CreateProfileController {
         return "profile_candidate";
     }
 
+    /**
+     * Method for creating a profile for a candidate
+     * @param candidate Completed candidate profile
+     * @param gender Candidate gender
+     * @param authentication Authentication to get the user stored in Spring Security
+     */
     @PostMapping("/create_profile_candidate")
     public String createProfileForCandidate(Candidate candidate, @RequestParam("gender1") String gender,
                                             Authentication authentication) {
@@ -52,6 +69,14 @@ public class CreateProfileController {
         return "redirect:/create_profile";
     }
 
+    /**
+     * Method for creating a profile for a company
+     * @param company Completed company profile
+     * @param gender The right gender for the company
+     * @param jobNature The right type of work for the company
+     * @param experience The right experience for the company
+     * @param authentication Authentication to get the user stored in Spring Security
+     */
     @PostMapping("/create_profile_employer")
     public String createProfileForEmployer(Company company, @RequestParam("gender1") String gender,
                                            @RequestParam("jobNature1") String jobNature,
@@ -62,12 +87,25 @@ public class CreateProfileController {
         return "redirect:/create_profile";
     }
 
+    /**
+     * Method for filling the candidate object with data
+     * @param candidate Completed candidate profile
+     * @param gender Candidate gender
+     * @return
+     */
     private Candidate fillingTheCandidates(Candidate candidate, String gender){
         attributes.addAttributesByIdsForCandidates(candidate, gender);
         candidate.setLink_img("/img/candiateds/" +(((int) ( Math.random() * 9)) + 1) + ".png");
         return candidate;
     }
 
+    /**
+     * Method for filling the company object with data
+     * @param company Completed company profile
+     * @param gender The right gender for the company
+     * @param jobNature The right type of work for the company
+     * @param experience The right experience for the company
+     */
     private Company fillingTheCompanies(Company company, String gender, String jobNature, String experience){
         attributes.addAttributesByIdsForCompanies(company, gender, jobNature, experience);
         company.setLink_img("/img/svg_icon/" + (((int) ( Math.random() * 4)) + 1) + ".svg");

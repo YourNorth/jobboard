@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Controller for mail confirmation
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("/token")
 public class ConfirmController {
@@ -18,6 +23,10 @@ public class ConfirmController {
         this.userService = userService;
     }
 
+    /**
+     * Method for checking a token for valid and user activation
+     * @param token The confirmation character set that came to the user in the mail
+     */
     @GetMapping("/{token}")
     public String checkToken(@PathVariable("token") String token){
         if (userService.confirm(token)) {

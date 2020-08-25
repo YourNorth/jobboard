@@ -15,6 +15,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Controller for working with the main page of the site
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 @RequestMapping({"/", "/index"})
 public class MainController {
@@ -37,6 +42,10 @@ public class MainController {
         this.commentService = commentService;
     }
 
+    /**
+     * Method for displaying the main page of the site
+     * @param model Page model
+     */
     @GetMapping
     public String getMain(Map<String, Object> model){
         List<Company> companies = IntStream.range(0, 5)
@@ -51,6 +60,9 @@ public class MainController {
         return "index";
     }
 
+    /**
+     * Method for sending to the page where the candidate can find a job
+     */
     @PostMapping
     public String findJob(){
         return "redirect:/jobs";

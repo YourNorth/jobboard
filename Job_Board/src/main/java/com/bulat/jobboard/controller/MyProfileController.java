@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Controller to view the created profile
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 public class MyProfileController {
 
@@ -27,6 +32,12 @@ public class MyProfileController {
         this.companyService = companyService;
     }
 
+    /**
+     * Method to view the created profile
+     * @param authentication Authentication to get the user stored in Spring Security
+     * @param request Request to check the user's role
+     * @param model Page model
+     */
     @GetMapping("/my_profile")
     public String myProfile(Authentication authentication, HttpServletRequest request, Map<String, Object> model){
         User user = ((UserDetailsImpl) authentication.getPrincipal()).getUser();

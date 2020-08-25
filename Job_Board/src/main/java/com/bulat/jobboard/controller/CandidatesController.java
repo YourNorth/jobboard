@@ -16,6 +16,11 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Controller for viewing details about the candidate and the ability to write a letter to him
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 public class CandidatesController {
 
@@ -28,6 +33,12 @@ public class CandidatesController {
         this.feedbackForCompanyService = feedbackForCompanyService;
     }
 
+    /**
+     * Method for viewing user details
+     * @param id Unique identifier for search
+     * @param model Page model
+     * @param request Request to check the user's role
+     */
     @GetMapping("/candidate/{id}")
     public String getCandidate(@PathVariable("id") Long id, Map<String, Object> model, HttpServletRequest request){
         Optional<Candidate> candidateOptional = candidateService.findById(id);
@@ -43,6 +54,13 @@ public class CandidatesController {
         }
     }
 
+    /**
+     * Method for the ability to write a letter to the candidate you like
+     * @param id Unique identifier
+     * @param model Page model
+     * @param request Request to check the user's role
+     * @param feedbackForCompany Object of the completed form for the company
+     */
     @PostMapping("/candidate/{id}")
     public String addFeedback(@PathVariable("id") Long id, Map<String, Object> model,
                               HttpServletRequest request, FeedbackForCompany feedbackForCompany){

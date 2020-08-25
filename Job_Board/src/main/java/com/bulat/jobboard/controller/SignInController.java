@@ -12,9 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.logging.LogManager;
 
+/**
+ * Controller for handling site entry
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 public class SignInController {
 
+    /**
+     * Method for handling site entry
+     * @param request Request to check the session
+     * @param modelMap Page model
+     * @param error Error object
+     */
     @GetMapping("/signIn")
     public String getSignIn(HttpServletRequest request, ModelMap modelMap, @RequestParam(value = "error", required = false) String error){
         LogManager.getLogManager().reset();

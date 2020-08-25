@@ -16,6 +16,11 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Controller for viewing details about the company and the ability to write to her
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 public class CompaniesController {
 
@@ -28,6 +33,12 @@ public class CompaniesController {
         this.feedbackForCandidateService = feedbackForCandidateService;
     }
 
+    /**
+     * Method for viewing company details
+     * @param name Unique identifier for search
+     * @param model Page model
+     * @param request Request to check the user's role
+     */
     @GetMapping("/company/{name}")
     public String getCompany(@PathVariable("name") String name, Map<String, Object> model, HttpServletRequest request) {
         Optional<Company> company = companyService.findByName(name);
@@ -41,6 +52,13 @@ public class CompaniesController {
             return "jobs";
     }
 
+    /**
+     * Method for the ability to write a letter to the company you like
+     * @param name Unique identifier
+     * @param model Page model
+     * @param request Request to check the user's role
+     * @param feedback Object of the completed form for the candidate
+     */
     @PostMapping("/company/{name}")
     public String addFeedback(@PathVariable("name") String name, Map<String,
             Object> model, HttpServletRequest request, FeedbackForCandidate feedback){

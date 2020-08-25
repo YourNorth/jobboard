@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.*;
 import com.bulat.jobboard.utils.Filter;
 
+/**
+ * Company search controller for various parameters
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("/jobs")
 public class FindJobForStudentsController {
@@ -27,6 +32,10 @@ public class FindJobForStudentsController {
         this.filter = filter;
     }
 
+    /**
+     * Method of obtaining all companies
+     * @param model Page model
+     */
     @GetMapping
     public String getCompanies(Map<String, Object> model) {
         model.put("companies", companyService.findAll());
@@ -34,6 +43,11 @@ public class FindJobForStudentsController {
         return "jobs";
     }
 
+    /**
+     * Company search method for various parameters
+     * @param model Page model
+     * @param company The company whose fields will be searched
+     */
     @PostMapping
     public String sortForCompany(Map<String, Object> model, Company company) {
         List<Company> companies = companyService.findAll();

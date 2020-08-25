@@ -17,6 +17,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controller for receiving feedback for the site
+ * @author Bulat Bilalov
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("/contact")
 public class FeedbackController {
@@ -30,11 +35,19 @@ public class FeedbackController {
         this.feedbackService = feedbackService;
     }
 
+    /**
+     * Feedback page method
+     */
     @GetMapping
     public String getContact(){
         return "contact";
     }
 
+    /**
+     * Method of receiving and storing received feedback
+     * @param f Feedback object
+     * @param authentication Authentication to get the user stored in Spring Security
+     */
     @PostMapping
     //FIXME: LAZY
     public String sendFeedback(Feedback f, Authentication authentication){
