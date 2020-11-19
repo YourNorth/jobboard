@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * @version 1.0
  */
 @Controller
-@RequestMapping({"/", "/index"})
+@RequestMapping({"/index"})
 public class MainController {
 
     private final CompanyService companyService;
