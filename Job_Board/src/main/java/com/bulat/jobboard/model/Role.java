@@ -1,8 +1,6 @@
 package com.bulat.jobboard.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -21,6 +19,8 @@ import java.util.List;
 @Entity
 @Table(name = "roles")
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Role extends BaseEntity implements GrantedAuthority {
 
     /** Role name */
