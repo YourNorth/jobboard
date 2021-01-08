@@ -6,10 +6,12 @@ import com.bulat.jobboard.service.CompanyService;
 import com.bulat.jobboard.service.FeedbackForCandidateService;
 import com.bulat.jobboard.utils.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
@@ -21,6 +23,7 @@ import java.util.Optional;
  * @author Bulat Bilalov
  * @version 1.0
  */
+@RepositoryRestController
 @Controller
 public class CompaniesController {
 
@@ -31,6 +34,14 @@ public class CompaniesController {
     public CompaniesController(CompanyService companyService, FeedbackForCandidateService feedbackForCandidateService) {
         this.companyService = companyService;
         this.feedbackForCandidateService = feedbackForCandidateService;
+    }
+
+
+
+    @PostMapping("/company/{name}/changeDescription")
+    public String changeDescription(@PathVariable("name") String name, @RequestBody String description){
+        companyService.changeDescription(companyService.findByName(name).get(),description);
+        return "/company/"+name;
     }
 
     /**

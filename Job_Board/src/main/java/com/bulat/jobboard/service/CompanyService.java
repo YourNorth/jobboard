@@ -12,4 +12,5 @@ public interface CompanyService {
     Optional<Company> findByName(String name);
     List<Company> findByUserId(Long user_id);
     Company save(Company company);
+    void changeDescription(Company company, String description);
 }
